@@ -1,0 +1,24 @@
+name: FTP Test
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    name: 🚀 Deploy website every commit
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v4
+
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: dengrweb.com
+          username: ${{ secrets.FTPUSERNAME }}
+          password: ${{ secrets.FTPPASSWORD }} 
+          protocol: ftp
+          server-dir: public_html/
+
+        
