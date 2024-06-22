@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+    <url>
+        <loc>http://localhost/GitHubDesktop/codecamp</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://localhost/GitHubDesktop/codecamp/category/html</loc>
+        <lastmod>2024-05-04T15:45:29+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://localhost/GitHubDesktop/codecamp/post/ut-esse-sunt-cupida</loc>
+        <lastmod>2024-05-04T15:49:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://localhost/GitHubDesktop/codecamp/post/officiis-nemo-conseq2024-05-05-011512</loc>
+        <lastmod>2024-05-05T14:58:58+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://localhost/GitHubDesktop/codecamp/post/ut-esse-sunt-cupida2024-05-05-014641</loc>
+        <lastmod>2024-05-05T14:46:41+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://localhost/GitHubDesktop/codecamp/post/iure-qui-rerum-qui-n2024-05-05-014753</loc>
+        <lastmod>2024-05-05T14:47:53+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://localhost/GitHubDesktop/codecamp/post/voluptas-impedit-co2024-05-05-020227</loc>
+        <lastmod>2024-05-05T15:02:27+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+</urlset>

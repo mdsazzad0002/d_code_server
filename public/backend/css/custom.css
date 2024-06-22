@@ -1,0 +1,22 @@
+td:has(.btn){
+    display:flex;
+    flex-wrap:nowrap;
+    gap:10px
+}
+.btn {
+    position:relative;
+    display:flex;
+    align-items:center;
+    gap:7px;
+    padding:0;
+    padding-right:10px;
+    justify-content:stretch;
+    height:29px;
+    overflow:hidden;
+    border-radius:3px;
+}
+
+.btn i{
+    background:rgba(0,0,0,0.4);
+    padding:7px 9px;
+}
