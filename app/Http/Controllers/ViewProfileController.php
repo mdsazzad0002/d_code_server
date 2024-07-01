@@ -24,6 +24,7 @@ class ViewProfileController extends Controller
         }
 
     }
+
     public function comment($id){
         if($id != null && !empty($id)){
              $user = User::where('username', $id)->get()->first();

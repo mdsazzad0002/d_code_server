@@ -13,16 +13,16 @@
         @endif
     </x-frontend.card_link>
 @empty
-<x-frontend.card_link>
-    <div class="text-center mt-2">
-        No Comment Found.
-        <br>
-        <hr>
-        <a class="btn btn-primary" href="{{ route('home') }}">Visit Post</a>
-    </div>
-</x-frontend.card_link>
-    @endforelse
-
+    <x-frontend.card_link>
+        <div class="text-center mt-2">
+            No Comment Found.
+            <br>
+            <hr>
+            <a class="btn btn-primary" href="{{ route('home') }}">Visit Post</a>
+        </div>
+    </x-frontend.card_link> fsd
+@endforelse
+zzzzzzzzzz
 {{ $comments->links() }}
 
 

@@ -1,5 +1,5 @@
 @extends('frontend.layouts.master')
-@section('title', Str::title($find_subcategory->name))
+@section('title', $find_subcategory->name)
 
 @section('content')
 

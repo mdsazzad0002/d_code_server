@@ -22,6 +22,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'username'
     ];
 
     /**
@@ -55,5 +56,8 @@ class User extends Authenticatable
         return $this->hasMany(SocialLink::class,'user_id' ,'id' );
     }
 
+    public function contribute(){
+        return $this->hasOne(ContributeSummarye::class, 'user_id', 'id');
+    }
 
 }

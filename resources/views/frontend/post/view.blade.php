@@ -65,7 +65,8 @@
                 formData,
 
             success:function(data){
-                console.log(data);
+                {{--  console.log(data);  --}}
+                toastr["success"](`Comments Added successfully`)
                 $('.comment_data').append(data);
                 Prism.highlightAll();
             }
@@ -90,7 +91,7 @@
     });
 
 
-   
+
 </script>
 @endpush
 

@@ -15,6 +15,7 @@ class comment_controller extends Controller
         );
 
         $comments = comment::where('post_id', $request->post_id)->get();
+        
         return view('frontend.post.partials.comment_format', compact('comments'));
     }
 

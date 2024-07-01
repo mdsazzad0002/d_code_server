@@ -24,8 +24,9 @@
 
 @php
     $i++;
+    $post_after = general_setting('post_center_showup_after') ?? false;
 @endphp
-@if($i % general_setting('post_center_showup_after') == 0)
+@if( $post_after && $i %  $post_after == 0)
     @component('components.frontend.ads', ['where'=>'post_center_showup'])@endcomponent
 @endif
 <x-frontend.card>

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('contribute_summaryes', function (Blueprint $table) {
 
             $table->id();
+            $table->text('user_id')->nullable();
             $table->text('post')->nullable();
             $table->text('comment')->nullable();
            $table->bigInteger('upvote')->nullable();

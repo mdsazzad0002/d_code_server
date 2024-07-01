@@ -1,14 +1,16 @@
+
 <div class="container py-3">
+
   {{-- Profile Menu --}}
     <ul class="nav nav-tabs">
         {{-- Overview Menu --}}
         <li class="nav-item">
           <a class="nav-link d-flex align-items-center gap-2
-          @if(auth()?->user()?->id == $user->id)
+          @if(auth()?->user() && auth()?->user()?->id == $user->id)
                 {{ Route::is('profile.index') ? 'active': '' }}"
                 href="{{ route('profile.index') }}"
             @else
-                {{ Route::is('user.index', $user->username) ? 'active': '' }}"
+                 {{ Route::is('user.index', $user->username) ? 'active': '' }}"
                 href="{{ route('user.index', $user->username) }}"
             @endif
 
@@ -25,9 +27,11 @@
         <li class="nav-item">
           <a class="nav-link
           @if(auth()?->user()?->id == $user->id)
-            {{ Route::is('profile.comment.index') ? 'active': '' }}"
-            href="{{ route('profile.comment.index') }}"
-        @else
+                {{ Route::is('profile.comment.index') ? 'active': '' }}"
+                href="{{ route('profile.comment.index') }}"
+            @else
+
+      
             {{ Route::is('user.comment', $user->username) ? 'active': '' }}"
              href="{{ route('user.comment', $user->username) }}"
           @endif

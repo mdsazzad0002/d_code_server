@@ -51,7 +51,7 @@ Route::get('/sitemap', function () {
 
     toastr()->success('Successfully Sitemap Generated!', 'Congrats');
     return back();
-    
+
 
 });
 // End Sitemap

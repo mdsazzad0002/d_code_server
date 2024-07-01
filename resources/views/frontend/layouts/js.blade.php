@@ -18,10 +18,7 @@
 <!-- ChartJS -->
 <script src="{{ static_asset('plugins/chart.js/Chart.min.js')}}"></script>
 
-<!-- AdminLTE for demo purposes -->
-<script src="{{ static_asset('frontend/js/demo.js')}}"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{ static_asset('frontend/dist/js/pages/dashboard2.js')}}"></script>
+
 
 <link rel="stylesheet" href="{{static_asset('plugins/')}}/prism/prism.css">
 <script src="{{static_asset('plugins/')}}/prism/prism.js"></script>

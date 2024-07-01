@@ -11,7 +11,7 @@
   </head>
   <body>
     @include('profile.layouts.nav')
-    @if(! Route::is('login') && !Route::is('register') || !Route::is('verify') || !Route::is('password.*') )
+    @if(! Route::is('login') && !Route::is('register') && !Route::is('verify') && !Route::is('password.*') )
         @include('profile.layouts.inter_nav')
         @include('profile.layouts.footer')
     @else
