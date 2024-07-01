@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Models\post;
-use App\Models\vote;
+use App\Models\Vote;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -17,7 +17,7 @@ class comment extends Model
 
     public function vote(){
         // if(auth()?->user()){
-            return $this->hasOne(vote::class, 'comment_id', 'id')->where('user_id', auth()?->user()?->id);
+            return $this->hasOne(Vote::class, 'comment_id', 'id')->where('user_id', auth()?->user()?->id);
         // }
     }
 

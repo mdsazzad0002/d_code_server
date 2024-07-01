@@ -3,8 +3,9 @@
 namespace App\Models;
 
 use DateTime;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\uploads;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class category extends Model
 {
