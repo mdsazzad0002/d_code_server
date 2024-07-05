@@ -45,7 +45,7 @@
 </x-frontend.card>
 @else
 <x-frontend.card>
-    <div class="row flex-column-reverse flex-md-row">
+    <div class="row  flex-md-row">
         <div class="col-md-6">
             <h1 class="font-weight-bold  d-md-none">{{ Str::title($items->name) }}</h1>
            <img class="w-100" src="{{ dynamic_asset($items->uploads_id) }}" alt="">

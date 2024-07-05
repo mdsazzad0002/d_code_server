@@ -47,10 +47,10 @@ $i++;
 </x-frontend.card>
 @else
 <x-frontend.card>
-    <div class="row flex-column-reverse flex-md-row">
+    <div class="row  flex-md-row">
         <div class="col-md-6">
             <h4 class="font-weight-bold d-md-none">{{ Str::title($items->name) }}</h1>
-                <img class="w-100" src="{{ dynamic_asset($items->id) }}" alt="">
+                <img class="w-100" src="{{ dynamic_asset($items->uploads_id) }}" alt="">
         </div>
 
         <div class="col-md-6 d-flex align-items-start justify-content-center flex-column py-2">

@@ -1,22 +1,24 @@
 <?php
 
-use App\Http\Controllers\backend\DashboardController;
-use App\Http\Controllers\comment_controller;
-use App\Http\Controllers\frontend\categoryController;
-use App\Http\Controllers\frontend\HomeController;
-use App\Http\Controllers\frontend\SubcategoryController;
-use App\Http\Controllers\SslCommerzPaymentController;
-use App\Http\Controllers\vendor\postManageController;
-use App\Http\Controllers\ViewProfileController;
-use App\Models\category;
-use App\Models\comment;
+
 use App\Models\post;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
-
-
+use App\Models\comment;
+use App\Models\category;
 use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\comment_controller;
+use App\Http\Controllers\ViewProfileController;
+use App\Http\Controllers\frontend\HomeController;
+use App\Http\Controllers\backend\DashboardController;
+
+
+use App\Http\Controllers\frontend\categoryController;
+use App\Http\Controllers\SslCommerzPaymentController;
+use App\Http\Controllers\vendor\postManageController;
+use App\Http\Controllers\frontend\SubcategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,6 +31,23 @@ use Spatie\Sitemap\Tags\Url;
 
 
 */
+
+// command access
+
+Route::get('/migrate', function(){
+    Artisan::call('migrate');
+    toastr()->success('Successfully migrated', 'Congrats');
+    return back();
+});
+// Route::get('/route_list', function(){
+//     Artisan::call('route:list');
+//     toastr()->success('Successfully get route', 'Congrats');
+//     return Artisan::output();
+//     return back();
+// });
+// end command access
+
+
 
 
 
