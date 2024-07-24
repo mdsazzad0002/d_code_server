@@ -18,6 +18,9 @@ return new class extends Migration
             $table->text('short_details');
             $table->text('details');
             $table->boolean('status')->default(false);
+            $table->integer('mm');
+            $table->integer('dd');
+            $table->integer('yyyy');
             $table->timestamps();
         });
     }

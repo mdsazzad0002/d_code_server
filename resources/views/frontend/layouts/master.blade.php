@@ -23,7 +23,12 @@
     @include('frontend.layouts.sidebar')
 
     <!-- Content Wrapper. Contains page content -->
-    @include('frontend.layouts.content_wrap')
+    @if(Route::is('home'))
+        @include('frontend.layouts.content_wrap_home')
+    @else
+        @include('frontend.layouts.content_wrap')
+    @endif
+
   <!-- /.content-wrapper -->
 
     @include('frontend.layouts.theme')

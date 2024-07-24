@@ -22,7 +22,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Schema::defaultStringLength(191);
-        view()->share('asset_version', rand(100,1000));
+        view()->share('asset_version', '1.0.0');
         Paginator::useBootstrapFour();
     }
 }

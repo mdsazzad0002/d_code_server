@@ -9,7 +9,7 @@
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
-      @component('components.frontend.ads', ['where'=>'sidebar_showup'])@endcomponent
+      
         <div class="mb-2">
         </div>
 

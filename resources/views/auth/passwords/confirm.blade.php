@@ -1,4 +1,5 @@
 @extends('profile.layouts.master')
+@section('title', 'Confirm')
 
 @section('content')
 <div class="container">

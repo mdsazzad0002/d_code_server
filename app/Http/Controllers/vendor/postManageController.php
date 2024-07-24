@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\vendor;
 
-use App\Http\Controllers\Controller;
-use App\Models\comment;
-use App\Models\post;
-use Illuminate\Support\Str;
-use App\Models\subcategory;
 use Carbon\Carbon;
+use App\Models\post;
+use App\Models\Vote;
+use App\Models\comment;
+use App\Models\subcategory;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class postManageController extends Controller
 {
@@ -34,7 +35,12 @@ class postManageController extends Controller
         $post = new post();
         $post->details = $request->details;
         $post->tilte = $request->title;
-        $post->user_id = auth()?->user()?->id ?? 0;
+        if(auth()->user()){
+            $user_id = auth()->user()->id;
+            $post->user_id =  $user_id;
+        }else{
+            $post->user_id = 0;
+        }
         $post->short_details = strip_tags($request->short_details);
         $post->subcategory_id = $request->subcategory;
         if(isset($request->upload_asset_image)){
@@ -42,10 +48,21 @@ class postManageController extends Controller
         }
         $post->status = $request->status ?? 1;
         $post->short_details = $request->short_details;
+        $post->dd = date('d');
+        $post->mm =date('m');
+        $post->yyyy = date('Y');
         $slug = Str::slug($request->title.Carbon::now()->toDateTimeString() ?? Carbon::now()->toDateTimeString(), '-');
         $post->slug = $slug ?? '';
         $post->save();
+
+        if(auth()->user()){
+            if(contribute_report_update(auth()->user()->id, 'post') == false){
+                return 'something is wrong';
+            }
+        }
+
         toastr()->success('Successfully Post  or Question Created', 'Congrats');
+
         return back();
 
     }
@@ -60,8 +77,8 @@ class postManageController extends Controller
 
     public function comment($id)
     {
-        $comments = comment::where('post_id', $id)->get();
-        return view('frontend.post.partials.comment_format_admin', compact('comments'));
+        $comments = comment::where('post_id', $id)->paginate(100);
+        return view('profile.comment.partials.comment', compact('comments'));
     }
 
 
@@ -125,15 +142,22 @@ class postManageController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(post $post)
+    public function destroy($id, post $post)
     {
+        $user_id = $post->user_id;
 
+        Vote::where('post_id', $post->id)->delete();
         comment::where('post_id', $post->id)->delete();
         asset_unlink($post->uploads_id);
         $post->delete();
 
+        if(contribute_report_update($user_id, 'post') == false){
+            return 'something is wrong';
+        }
         return back();
 
     }
 
+
 }
+

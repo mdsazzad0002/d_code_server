@@ -3,13 +3,8 @@
 
 @section('content')
 <div id="paginated_content">
-    @include('profile.partials.comment')
+    @include('profile.comment.partials.comment')
 </div>
 
 @endsection
 
-@push('styles')
-<style>
-
-</style>
-@endpush

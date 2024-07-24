@@ -3,9 +3,9 @@
 @section('content')
 
     <div id="paginated_content">
-        @include('profile.partials.post')
+        @include('profile.post.partials.post')
     </div>
-    
+
 @endsection
 
 @push('styles')

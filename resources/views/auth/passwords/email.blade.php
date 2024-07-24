@@ -1,4 +1,5 @@
 @extends('profile.layouts.master')
+@section('title', 'Reset password')
 
 @section('content')
 <div class="container">
@@ -21,7 +22,7 @@
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Enter your email address" autofocus>
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -39,6 +40,19 @@
                             </div>
                         </div>
                     </form>
+
+
+                    <div class="text-center">
+                        <br>
+                        <h1>OR</h1>
+                        <br>
+                        <a class="btn-link" href="{{ route('login') }}">Login Now</a>
+                        &nbsp;
+                        &nbsp;
+                        &nbsp;
+                        &nbsp;
+                        <a class="btn-link" href="{{ route('register') }}">Register Now</a>
+                    </div>
                 </div>
             </div>
         </div>

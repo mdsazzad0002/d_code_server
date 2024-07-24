@@ -1,10 +1,15 @@
 <?php
 
-use App\Models\category;
-use App\Models\GeneralSetting;
-use App\Models\subcategory;
-use App\Models\uploads;
 use Carbon\Carbon;
+use App\Models\Vote;
+use App\Models\comment;
+use App\Models\uploads;
+use App\Models\category;
+use App\Models\subcategory;
+use App\Models\GeneralSetting;
+use App\Models\ContributeSummarye;
+use App\Models\post;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 
 function static_asset($string_data)
@@ -95,8 +100,9 @@ function dynamic_asset($id)
 
 function asset_unlink($id)
 {
+
     $destinationPath = 'uploads/';
-    if ($id != null || $id != '') {
+    if ($id != null && $id != '' && $id != 0) {
         $file1 = $destinationPath . uploads::find($id)->name;
         // return static_asset($file1);
         if (File::exists(public_path($file1)) || is_dir(public_path($file1))) {
@@ -109,7 +115,7 @@ function asset_unlink($id)
             return true;
         }
     }
-    return false;
+    return true;
 }
 
 function category_head($items){
@@ -132,11 +138,91 @@ function general_setting($key){
         }
         return $value;
     }else{
-        return false;
+        return null;
     }
 
 }
 
 function vote_cookie($commnent_id){
-    return $_COOKIE[$commnent_id] ??  FALSE ;
+    return $_COOKIE[$commnent_id] ??  '' ;
 }
+
+
+
+
+// report contribute
+ function contribute_report_update($user_id, $type)
+{
+    if($type == 'vote'){
+         $total_vote = Vote::where('user_id', $user_id)
+            ->select(DB::raw('SUM(downvote) as dvote'), DB::raw('SUM(upvote) as uvote'))
+            ->first();
+
+        if($total_vote != null){
+            $contribute_summary = ContributeSummarye::where('user_id', $user_id)->first();
+            if($contribute_summary){
+                $contribute_summary->downvote = $total_vote->dvote;
+                $contribute_summary->upvote = $total_vote->uvote;
+                $contribute_summary->save();
+                return true;
+            }else{
+                $contribute_summary = new ContributeSummarye;
+                $contribute_summary->user_id = $user_id;
+                $contribute_summary->post = 0;
+                $contribute_summary->comment = 0;
+                $contribute_summary->downvote = $total_vote->dvote;
+                $contribute_summary->upvote = $total_vote->uvote;
+                $contribute_summary->save();
+                return true;
+            }
+
+        }else{
+            return false;
+        }
+    }elseif ($type=='comment') {
+        $total_comment =  comment::where('user_id', $user_id)->count();
+
+            $contribute_summary = ContributeSummarye::where('user_id', $user_id)->first();
+            if($contribute_summary){
+                $contribute_summary->comment = $total_comment;
+                $contribute_summary->save();
+                return true;
+            }else{
+                $contribute_summary = new ContributeSummarye;
+                $contribute_summary->user_id = $user_id;
+                $contribute_summary->post = 0;
+                $contribute_summary->comment = $total_comment;
+                $contribute_summary->downvote = 0;
+                $contribute_summary->upvote = 0;
+                $contribute_summary->save();
+                return true;
+            }
+            return false;
+            
+    }elseif ($type=='post') {
+        $total_post =  post::where('user_id', $user_id)->count();
+
+
+        $contribute_summary = ContributeSummarye::where('user_id', $user_id)->first();
+        if($contribute_summary){
+            $contribute_summary->post = $total_post;
+            $contribute_summary->save();
+            return true;
+        }else{
+            $contribute_summary = new ContributeSummarye;
+            $contribute_summary->user_id = $user_id;
+            $contribute_summary->comment = 0;
+            $contribute_summary->post = $total_post;
+            $contribute_summary->downvote = 0;
+            $contribute_summary->upvote = 0;
+            $contribute_summary->save();
+            return true;
+        }
+        return false;
+
+    }
+
+}
+//end  report contribute
+
+

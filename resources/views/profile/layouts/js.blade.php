@@ -3,7 +3,7 @@
 <!-- bootstrap 4 js -->
 <script src="{{static_asset('backend/')}}/js/popper.min.js"></script>
 <script src="{{static_asset('backend/')}}/js/bootstrap.min.js"></script>
-
+<script src="{{static_asset('plugins/')}}/sweetalert2/sweetalert2.all.min.js"></script>
 <script src="{{static_asset('plugins/')}}/markdown/simplemde.min.js"></script>
 
 <script src="{{static_asset('plugins/')}}/prism/prism.js"></script>
@@ -21,7 +21,7 @@
 $('#username_check').parents('form#profile_edit').find('button[type="submit"]').prop('disabled', true);
         $.ajax({
             type:'get',
-            url:"{{ route('profile.username_check.index') }}",
+            url:"{{ route('users.username_check.index') }}",
             data: {
                 username: $('#username_check').val()
             },
@@ -54,7 +54,7 @@ $('#username_check').parents('form#profile_edit').find('button[type="submit"]').
         if(id != 0){
             $.ajax({
                 type:'get',
-                url: '{{ route('profile.quick_link_delete.index') }}',
+                url: '{{ route('users.quick_link_delete.index') }}',
                 data:{
                     'id':id
                 },
@@ -97,13 +97,6 @@ $('#username_check').parents('form#profile_edit').find('button[type="submit"]').
                     $('.'+type+comments_id).parents('div.btn-group').find('button').removeClass('active');
                     $('.'+type+comments_id).parents('button').addClass("active");
                 }
-
-            //   if(type == 'upvote'){
-            //     // $('.'+type+comments_id).parents('button').classList.remove('active');
-
-            //   }else{
-            //     $('.'+type+comments_id).parents('button').addClass("active");
-            //   }
 
             }
         })

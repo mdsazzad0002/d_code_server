@@ -1,11 +1,11 @@
-<x-frontend.card>
+<x-frontend.card >
     <h3 class="mb-3">View More Categories</h3>
     @php
         $catgory_list_footer = category_head(30);
     @endphp
     <div class="row">
         @foreach ($catgory_list_footer as $items )
-            <div class=" col-md-4 col-xl-3 mb-2 p-2 ">
+            <div class=" col-md-4 col-xl-12 mb-2 p-2 " >
                 <div class="card mb-0">
                     <div class="card-body">
                         <a href="{{ route('category.index', $items->slug) }}" class=" text-black w-full">{{Str::title($items->name) }}</a>

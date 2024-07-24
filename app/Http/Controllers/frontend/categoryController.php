@@ -17,9 +17,12 @@ class categoryController extends Controller
             $category_id = $category['id'];
             $category_list = category::where('status', 1)->get();
             $subcategory = subcategory::where('category_id', $category_id )->where('status',1)->paginate(15);
-            return view('frontend.sucategory.index', compact('category','subcategory', 'category_slug','category_list'));
+            return view('frontend.category.index', compact('category','subcategory', 'category_slug','category_list'));
         }else{
             abort(404);
         }
     }
+
+
+
 }

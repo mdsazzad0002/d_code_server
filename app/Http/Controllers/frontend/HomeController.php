@@ -25,21 +25,23 @@ class HomeController extends Controller
 
         $banner = Banner::where('status', 1)->get();
         $category = category::where('status', 1)->paginate(15);
-        return view('home', compact('category', 'banner'));
+        return view('frontend.home.index', compact('category', 'banner'));
     }
 
-    // public function searchdata(Request $request)
-    // {
-    //     $posts = Post::search($request->q)->paginate(5);
 
-    //      return view('welcome', compact('posts'));
-    // }
-
+    public function feed(){
+        return view('frontend.feed.index');
+    }
 
     public function get_data_search(Request $request){
         // return $request;
         if(isset($request->query_data)){
-            return post::where('status', 1)->where('tilte','LIKE','%'. $request->query_data.'%')->orWhere('short_details' ,'LIKE','%'.$request->query_data.'%')->orWhere('details','LIKE','%'.$request->query_data.'%')->limit(15)->get();
+            return post::where('status', 1)
+                    ->where('tilte','LIKE','%'. $request->query_data.'%')
+                    ->orWhere('short_details' ,'LIKE','%'.$request->query_data.'%')
+                    ->orWhere('details','LIKE','%'.$request->query_data.'%')
+                    ->limit(15)
+                    ->get();
         }else{
             return '';
         }

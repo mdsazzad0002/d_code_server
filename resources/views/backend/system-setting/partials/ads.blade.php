@@ -11,23 +11,33 @@
             @csrf
             @method('post')
 
+
             <div class="col-md-4 mb-2">
-                <label for="top_showup">Top ADS</label>
-                <textarea class="form-control" placeholder="Top ADS" name="top_showup" type="text" id="top_showup">@isset($general_setting['top_showup']){{$general_setting['top_showup']}} @endisset </textarea>
+                <label for="home_showup">Home Page</label>
+                <textarea class="form-control" placeholder="Home Page" name="home_showup" type="text" id="home_showup">@isset($general_setting['home_showup']){{$general_setting['home_showup']}}@endisset</textarea>
             </div>
+
+            <div class="col-md-4 mb-2">
+                <label for="category_showup">Category Page</label>
+                <textarea class="form-control" placeholder="Category Page" name="category_showup" type="text" id="category_showup">@isset($general_setting['category_showup']){{$general_setting['category_showup']}}@endisset</textarea>
+            </div>
+            <div class="col-md-4 mb-2">
+                <label for="details_showup">Details Page</label>
+                <textarea class="form-control" placeholder="Details Page" name="details_showup" type="text" id="details_showup">@isset($general_setting['details_showup']){{$general_setting['details_showup']}}@endisset</textarea>
+            </div>
+
+            <div class="col-md-4 mb-2">
+                <label for="page_top_showup">Page Top</label>
+                <textarea class="form-control" placeholder="Page Top" name="page_top_showup" type="text" id="page_top_showup">@isset($general_setting['page_top_showup']){{$general_setting['page_top_showup']}}@endisset</textarea>
+            </div>
+
+
             <div class="col-md-4 mb-2">
                 <label for="footer_showup">Footer ADS</label>
                 <textarea class="form-control" placeholder="Footer ADS" name="footer_showup" type="text" id="footer_showup">@isset($general_setting['footer_showup']){{$general_setting['footer_showup']}} @endisset </textarea>
             </div>
-            <div class="col-md-4 mb-2">
-                <label for="post_center_showup">Post Center ADS</label>
-                <textarea class="form-control" placeholder="Content Center ADS" name="post_center_showup"  type="text" id="post_center_showup">@isset($general_setting['post_center_showup']) {{$general_setting['post_center_showup']}} @endisset</textarea>
-            </div>
+   
 
-            <div class="col-md-4 mb-2">
-                <label for="sidebar_showup">Sidebar ADS</label>
-                <textarea class="form-control" placeholder="Sidebar ADS" name="sidebar_showup"  type="text" id="sidebar_showup">@isset($general_setting['sidebar_showup']){{ $general_setting['sidebar_showup']}} @endisset</textarea>
-            </div>
 
 
             <div class="col-md-4 mb-2">

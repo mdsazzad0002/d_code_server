@@ -17,6 +17,9 @@ return new class extends Migration
             $table->integer('upvote');
             $table->integer('downvote');
             $table->bigInteger('post_id');
+            $table->integer('mm');
+            $table->integer('dd');
+            $table->integer('yyyy');
             $table->timestamps();
         });
     }

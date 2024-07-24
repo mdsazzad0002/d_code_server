@@ -11,6 +11,8 @@ class Vote extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['updated_at'];
+
     public function comment(){
         return $this->hasOne(comment::class, 'id', 'comment_id');
     }

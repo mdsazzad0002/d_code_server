@@ -7,15 +7,15 @@
         <h6 class="user-name dropdown-toggle mb-0" data-toggle="dropdown">{{ Str::title(auth()->user()->name) }}
         </h6>
         <div class="dropdown-menu bg-dark text-light border-top-0" style="width:100% !important">
-            <a href="{{ route('profile.index') }}" class="dropdown-item">Overview</a>
-            <a href="{{ route('profile.index') }}" class="dropdown-item">Comment</a>
-            <a href="{{ route('profile.index') }}" class="dropdown-item">Vote</a>
-            <a href="{{ route('profile.index') }}" class="dropdown-item">Post</a>
-            <a href="{{ route('profile.index') }}" class="dropdown-item">Profile</a>
-            <a href="{{ route('profile.index') }}" class="dropdown-item">Job Profile</a>
-            <a href="{{ route('profile.index') }}" class="dropdown-item">Job Post</a>
-            <a href="{{ route('profile.index') }}" class="dropdown-item">Developer</a>
-            <a href="{{ route('profile.index') }}" class="dropdown-item">About services</a>
+            <a href="{{ route('users.index', auth()->user()->username) }}" class="dropdown-item">Overview</a>
+            {{--  <a href="{{ route('users.index') }}" class="dropdown-item">Comment</a>
+            <a href="{{ route('users.index') }}" class="dropdown-item">Vote</a>
+            <a href="{{ route('users.index') }}" class="dropdown-item">Post</a>
+            <a href="{{ route('users.index') }}" class="dropdown-item">Profile</a>
+            <a href="{{ route('users.index') }}" class="dropdown-item">Job Profile</a>
+            <a href="{{ route('users.index') }}" class="dropdown-item">Job Post</a>
+            <a href="{{ route('users.index') }}" class="dropdown-item">Developer</a>
+            <a href="{{ route('users.index') }}" class="dropdown-item">About services</a>  --}}
 
             <form action="{{ route('logout') }}" method="POST">
                 @method('post')

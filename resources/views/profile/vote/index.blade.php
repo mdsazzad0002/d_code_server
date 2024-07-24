@@ -3,7 +3,7 @@
 
 @section('content')
 <div id="paginated_content">
-    @include('profile.vote.vote_partials')
+    @include('profile.vote.partials.vote')
 </div>
 
 @endsection

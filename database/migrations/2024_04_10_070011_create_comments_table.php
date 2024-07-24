@@ -17,6 +17,9 @@ return new class extends Migration
             $table->bigInteger('upvote')->default(false);
             $table->bigInteger('downvote')->default(false);
             $table->longText('comments');
+            $table->integer('mm');
+            $table->integer('dd');
+            $table->integer('yyyy');
             $table->timestamps();
         });
     }

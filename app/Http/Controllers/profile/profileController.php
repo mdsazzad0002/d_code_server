@@ -103,8 +103,8 @@ class profileController extends Controller
 
     public function profile_details_edit(Request $request, $id){
 
-        if(auth()?->user() && $id){
-            if(auth()->user()->id == $id){
+        if(auth()->user() && $id){
+            if(auth()->user()->username == $id){
                 $profile_details = '';
                 $user_id = $id;
                 $profile_details = ProfileDetail::where('user_id', $id)->get()->first();
@@ -115,28 +115,31 @@ class profileController extends Controller
             }
         }
     }
-    public function profile_details_update(Request $request){
+    public function profile_details_update(Request $request,$id){
         $request->validate([
-            'user_id'=>'required',
             'details'=>'required',
         ]);
 
         // return $request->details;
 
-        if(auth()->user()->id == $request->user_id){
-            $profile_details = ProfileDetail::where('user_id', $request->user_id)->get()->first();
+        if(auth()->user() && auth()->user()->username == $id){
+
+            $profile_details = ProfileDetail::where('user_id',auth()->user()->id)->get()->first();
             if($profile_details){
 
             }else{
                 $profile_details = new ProfileDetail;
             }
             $profile_details->details = $request->details;
-            $profile_details->user_id = $request->user_id;
+            $profile_details->user_id = auth()->user()->id;
             $profile_details->save();
 
             return back();
+        }else{
+            return 'Please try again';
         }
     }
+
 
 
 
