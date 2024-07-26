@@ -2,8 +2,7 @@
 
 
     @include('frontend.layouts.partials.header_ads')
-
-
+    
 
     <!-- Main content -->
     <section class="content">

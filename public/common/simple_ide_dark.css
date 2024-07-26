@@ -1,0 +1,17 @@
+
+#modal_setup .editor-toolbar a {
+    color:white !important;
+}
+#modal_setup  .editor-toolbar a.active ,
+#modal_setup  .editor-toolbar a:hover {
+    color:black !important;
+}
+
+
+#modal_setup  .fullscreen.editor-toolbar a {
+    color:black !important;
+}
+#modal_setup  .fullscreen.editor-toolbar a.active ,
+#modal_setup  .fullscreen.editor-toolbar a:hover {
+    color:gray !important;
+}

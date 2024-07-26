@@ -37,6 +37,10 @@
         @endif
 
         <li class="nav-item">
+            <button type="button" class="btn btn-link text-light  form markdown" data-toggle="modal" data-target="#modal_setup" data-title="Post Create" data-action="{{ route('user-post.post.store') }}" data-socuce="{{ route('user-post.post.create') }}" data-method="post">
+                <i class="fa fa-plus"></i> Post</button>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                 <i class="fas fa-expand-arrows-alt"></i>
             </a>

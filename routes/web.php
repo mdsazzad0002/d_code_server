@@ -51,6 +51,7 @@ Route::get('/feed_load_data_posst', [FeedController::class, 'feed_load'])->name(
 Route::get('category/{slug?}', [categoryController::class, 'index'])->name('category.index');
 
 Route::get('category/{slug?}/subcategory/{subcategory?}', [subcategoryController::class, 'index'])->name('subcategory.index');
+Route::get('subcategory/{id?}/{slug?}', [subcategoryController::class, 'index_subcategory'])->name('subcategory_by_id.index');
 
 
 Route::get('category/{slug?}/subcategory/{subcategory?}/{post?}', [DetailsController::class, 'index'])->name('post.index');

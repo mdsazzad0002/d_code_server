@@ -40,11 +40,11 @@ Route::put('{id}/details/update/', [profileController::class, 'profile_details_u
 Route::delete('{id}/comment/delete/', [commentController::class, 'comment_delete'])->name('comment.delete');
 
 
-Route::get('/comment/', [commentController::class, 'index'])->name('comment.index');
+Route::get('/comment', [commentController::class, 'index'])->name('comment.index');
 
-Route::get('/vote/', [voteController::class, 'index'])->name('vote.index');
+Route::get('/vote', [voteController::class, 'index'])->name('vote.index');
 
-Route::get('/posts/', [ProfilePostController::class, 'index'])->name('post.index');
+Route::get('/posts', [ProfilePostController::class, 'index'])->name('post.index');
 
 
 

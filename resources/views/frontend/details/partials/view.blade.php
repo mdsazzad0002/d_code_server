@@ -47,12 +47,17 @@
     <form action="" id="post_details_editor">
         @csrf
         <input type="number" name="post_id" value="{{ $view_post->id }}" hidden>
-        <textarea name="details" Placeholder="Details" id="details" class="form-control mb-2"  cols="30" rows="10"></textarea>
+        <textarea name="details" Placeholder="Details" id="details_comment" class="form-control mb-2"  cols="30" rows="10"></textarea>
         <button type="submit" class="float-right btn btn-primary"><i class="fas fa-comment"></i> Comment Submit</button>
     </form>
 </x-frontend.card>
+{{--  
+<script>
+    setTimeout(function(){
+            var simplemde = new SimpleMDE({ element: $("#details_comment")[0] });
+    },700)
 
-
+</script>  --}}
 
 
 

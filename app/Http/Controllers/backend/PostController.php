@@ -71,7 +71,7 @@ class PostController extends Controller
     public function comment($id)
     {
         $comments = comment::where('post_id', $id)->get();
-        return view('frontend.post.partials.comment_format_admin', compact('comments'));
+        return view('frontend.details.partials.comment_format_admin', compact('comments'));
     }
 
 

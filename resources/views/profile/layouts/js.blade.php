@@ -18,22 +18,22 @@
     $('#username_check').parents('form#profile_edit').find('button[type="submit"]').prop('disabled', false);
     $('#username_check').on('keyup',function(){
 // console.log(this);
-$('#username_check').parents('form#profile_edit').find('button[type="submit"]').prop('disabled', true);
-        $.ajax({
-            type:'get',
-            url:"{{ route('users.username_check.index') }}",
-            data: {
-                username: $('#username_check').val()
-            },
-            success:function(data){
-                if(data == 1){
-                    $('#username_check').parents('form#profile_edit').find('button[type="submit"]').prop('disabled', false);
-                }else{
-                    $('#username_check').parents('form#profile_edit').find('button[type="submit"]').prop('disabled', true);
+    $('#username_check').parents('form#profile_edit').find('button[type="submit"]').prop('disabled', true);
+            $.ajax({
+                type:'get',
+                url:"{{ route('users.username_check.index') }}",
+                data: {
+                    username: $('#username_check').val()
+                },
+                success:function(data){
+                    if(data == 1){
+                        $('#username_check').parents('form#profile_edit').find('button[type="submit"]').prop('disabled', false);
+                    }else{
+                        $('#username_check').parents('form#profile_edit').find('button[type="submit"]').prop('disabled', true);
+                    }
                 }
-            }
+            })
         })
-    })
 
 
 
@@ -74,7 +74,7 @@ $('#username_check').parents('form#profile_edit').find('button[type="submit"]').
 
 
 </script>
-@include('backend.layouts.ajax_data_modal')
+
 <script>
     Prism.highlightAll();
     function vote(type, comments_id, post_id){
@@ -105,9 +105,9 @@ $('#username_check').parents('form#profile_edit').find('button[type="submit"]').
 
 
 </script>
+
 @include('common.paginated_ajax')
+@include('common.js')
 @stack('script')
 
-@include('common.js')
 
-<x-tostar></x-tostar>

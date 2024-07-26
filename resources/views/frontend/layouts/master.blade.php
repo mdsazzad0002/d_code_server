@@ -2,47 +2,51 @@
 <html lang="en">
 <head>
 
-    @include('frontend.layouts.meta')
+    @include('frontend.layouts.partials.meta')
     <title>@yield('title') - {{ Str::title(general_setting('site_title'))}} </title>
-    @include('frontend.layouts.css')
+    @include('frontend.layouts.partials.css')
     @stack('styles')
 
 </head>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
-<div class="wrapper">
-  <!-- Preloader -->
-  {{-- <div class="preloader flex-column justify-content-center align-items-center">
+    <div class="wrapper">
+        <!-- Preloader -->
+        {{-- <div class="preloader flex-column justify-content-center align-items-center">
     <img class="animation__wobble" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
   </div> --}}
 
-    <!-- Navbar -->
-    @include('frontend.layouts.nav')
-    <!-- /.navbar -->
+        <!-- Navbar -->
+        @include('frontend.layouts.nav')
+        <!-- /.navbar -->
 
-    <!-- Main Sidebar Container -->
-    @include('frontend.layouts.sidebar')
+        <!-- Main Sidebar Container -->
+        @include('frontend.layouts.sidebar')
 
-    <!-- Content Wrapper. Contains page content -->
-    @if(Route::is('home'))
+        <!-- Content Wrapper. Contains page content -->
+        @if(Route::is('home'))
         @include('frontend.layouts.content_wrap_home')
-    @else
+        @else
         @include('frontend.layouts.content_wrap')
-    @endif
-
-  <!-- /.content-wrapper -->
-
-    @include('frontend.layouts.theme')
-    <!-- Main Footer -->
-    <x-backend.modal_donation></x-backend.modal_donation>
+        @endif
 
 
 
-    @include('common.footer')
+        @include('common.footer')
     </div>
 
     <!-- ./wrapper -->
-    @include('frontend.layouts.js')
-    <x-tostar></x-tostar>
+    @include('frontend.layouts.partials.js')
+    <!-- footer area start-->
+
+
+
+
+
+
+    @include('common.js')
+
     @stack('scripts')
+
+
 </body>
 </html>

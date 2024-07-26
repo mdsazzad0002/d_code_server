@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="{{static_asset('plugins/')}}/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="{{static_asset('plugins/')}}/markdown/simplemde.min.css">
     <link rel="stylesheet" href="{{static_asset('common/')}}/style.css">
+    <link rel="stylesheet" href="{{static_asset('common/')}}/simple_ide_dark.css">
 
 <link rel="stylesheet" href="{{static_asset('plugins/')}}/prism/prism.css">
 @stack('styles')
@@ -144,23 +145,6 @@
 }
 .card-body img{
     max-width: 100%;
-}
-
-.editor-toolbar a {
-    color:white !important;
-}
-.editor-toolbar a.active ,
-.editor-toolbar a:hover {
-    color:black !important;
-}
-
-
-.fullscreen.editor-toolbar a {
-    color:black !important;
-}
-.fullscreen.editor-toolbar a.active ,
-.fullscreen.editor-toolbar a:hover {
-    color:gray !important;
 }
 
 .dropdown-menu.show {

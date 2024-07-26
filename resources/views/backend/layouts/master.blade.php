@@ -36,7 +36,7 @@
         <!-- main content area end -->
         <!-- footer area start-->
         <x-backend.modal_view></x-backend.modal_view>
-        <x-backend.modal></x-backend.modal>
+        <x-modal></x-modal>
         <x-backend.modal_delete></x-backend.modal_delete>
 
        @include('backend.layouts.footer')

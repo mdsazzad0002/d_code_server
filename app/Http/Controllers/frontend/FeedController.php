@@ -34,15 +34,15 @@ class FeedController extends Controller
             ->orderBy('comments_count', 'desc')
             ->orderBy('votes_count', 'desc')
             ->get();
-  
 
-        
+
+
 
         return view('frontend.feed.index', compact('category', 'contribute_data'));
     }
 
     public function feed_load(){
-        $posts_data_format_feed    = post::inRandomOrder()->limit(3)->get();
+        $posts_data_format_feed    = post::inRandomOrder()->limit(4)->get();
         return view('frontend.feed.post', compact('posts_data_format_feed'));
     }
 }

@@ -1,6 +1,54 @@
-<script>
 
-function vote(type, comments_id, post_id){
+<x-ajax_data_modal></x-ajax_data_modal>
+
+<script>
+    //Lazy load
+    var lazyloadThrottleTimeout;
+    var hasScrolled = false;
+
+    function lazyload() {
+        var lazyloadImages = document.querySelectorAll("img.lazy");
+        if (lazyloadThrottleTimeout) {
+            clearTimeout(lazyloadThrottleTimeout);
+        }
+
+        lazyloadThrottleTimeout = setTimeout(function() {
+            var scrollTop = window.pageYOffset;
+            lazyloadImages.forEach(function(img) {
+                if (img.offsetTop < (window.innerHeight + scrollTop)) {
+                    img.src = img.dataset.src;
+                    img.classList.remove('lazy');
+                }
+            });
+
+            // Remove loaded images from the NodeList
+            lazyloadImages = document.querySelectorAll("img.lazy");
+
+            // Scroll horizontally by 100% of the window width only once
+            if (!hasScrolled && lazyloadImages.length > 0) {
+                window.scrollBy(window.innerWidth, 0);
+                hasScrolled = true;
+            }
+
+            // If all images are loaded, remove event listeners
+            {{--  if (lazyloadImages.length == 0) {
+                document.removeEventListener("scroll", lazyload);
+                window.removeEventListener("resize", lazyload);
+                window.removeEventListener("orientationChange", lazyload);
+            }  --}}
+        }, 20);
+    }
+    lazyload()
+    document.addEventListener("scroll", lazyload);
+    window.addEventListener("resize", lazyload);
+    window.addEventListener("orientationChange", lazyload);
+
+    // Initial call to load images that are in view on page load
+
+
+
+
+    function vote(type, comments_id, post_id){
         $.ajax({
             type:'get',
             url:'{{ route('comment.update') }}',
@@ -24,4 +72,8 @@ function vote(type, comments_id, post_id){
         })
     }
 
+
+
 </script>
+<x-modal></x-modal>
+<x-tostar></x-tostar>

@@ -18,10 +18,11 @@
 @include('frontend.feed.create')
 
 @include('frontend.feed.partials.today_top_contribute')
-@include('frontend.feed.partials.js')
 
 
-<div class="post_data_feed">
+
+
+<div class="post_data_feed row">
 
 </div>
 

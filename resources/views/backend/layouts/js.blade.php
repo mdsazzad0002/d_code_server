@@ -15,13 +15,12 @@
 <script src="{{static_asset('plugins/')}}/datatables/jquery.dataTables.js"></script>
 <script src="{{static_asset('plugins/')}}/datatables/jquery.dataTables.min.js"></script>
 <script src="{{static_asset('plugins/')}}/datatables/dataTables.bootstrap4.min.js"></script>
-{{-- <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-<script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script> --}}
+
 <!-- others plugins -->
 <script src="{{static_asset('backend/')}}/js/plugins.js"></script>
 <script src="{{static_asset('backend/')}}/js/scripts.js"></script>
 
-@include('backend.layouts.ajax_data_modal')
+<x-ajax_data_modal></x-ajax_data_modal>
 
 {{-- @yield('scripts') --}}
 
