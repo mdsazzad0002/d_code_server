@@ -4,9 +4,9 @@
     <div class="d-flex align-items-center justify-content-center gap-3">
         <div class="overflow-hidden" style="width:80px; height:80px; ">
             @if(auth()->user())
-               <img class="rounded-circle   w-100 h-100" style="object-fit: cover" src="{{ dynamic_asset(auth()->user()->upload_id) }}" alt=""></div>
+               <img class="rounded-circle   w-100 h-100 lazy" style="object-fit: cover" data-src="{{ dynamic_asset(auth()->user()->upload_id) }}" alt=""></div>
             @else
-               <img class="rounded-circle  w-100 h-100" style="object-fit: cover" src="{{ dynamic_asset(0) }}" alt=""></div>
+               <img class="rounded-circle  w-100 h-100 lazy" style="object-fit: cover" data-src="{{ dynamic_asset(0) }}" alt=""></div>
             @endif
         <div style="width: calc(100% - 80px);    ">
             <input class="form-control" style=" padding: 33px;

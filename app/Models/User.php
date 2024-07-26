@@ -25,8 +25,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'username'
+        'username',
+        'upload_file'
     ];
+    protected $appends = ['upload_file'];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -61,6 +63,21 @@ class User extends Authenticatable
 
     public function contribute(){
         return $this->hasOne(ContributeSummarye::class, 'user_id', 'id');
+    }
+    public function votes(){
+        return $this->hasMany(Vote::class, 'user_id');
+    }
+    public function comments(){
+        return $this->hasMany(comment::class, 'user_id');
+    }
+    public function posts(){
+        return $this->hasMany(post::class, 'user_id');
+    }
+    public function getUploadFileAttribute()
+    {
+        return dynamic_asset($this->upload_id);
+        
+       
     }
 
 }

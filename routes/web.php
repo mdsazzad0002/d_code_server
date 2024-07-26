@@ -17,7 +17,7 @@ use App\Http\Controllers\frontend\DetailsController;
 
 use App\Http\Controllers\frontend\categoryController;
 use App\Http\Controllers\frontend\comment_controller;
-
+use App\Http\Controllers\frontend\FeedController;
 use App\Http\Controllers\vendor\postManageController;
 use App\Http\Controllers\frontend\subcategoryController;
 use Database\Seeders\DatabaseSeeder;
@@ -40,7 +40,9 @@ use Database\Seeders\DatabaseSeeder;
 
 // Homepage Frontend Homepage
 Route::get('/category', [HomeController::class, 'index'])->name('home.category');
-Route::get('/', [HomeController::class, 'feed'])->name('home');
+Route::get('/', [FeedController::class, 'index'])->name('home');
+
+Route::get('/feed_load_data_posst', [FeedController::class, 'feed_load'])->name('feed_load_data_post');
 
 // End Homepage Frontend Homepage
 

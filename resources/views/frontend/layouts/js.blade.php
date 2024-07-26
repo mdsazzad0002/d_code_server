@@ -19,6 +19,53 @@
 <script src="{{ static_asset('plugins/chart.js/Chart.min.js')}}"></script>
 
 
+<script>
+    //it script for lazyload image
+        var lazyloadThrottleTimeout;
+        var hasScrolled = false;
+
+        function lazyload() {
+            var lazyloadImages = document.querySelectorAll("img.lazy");
+            if (lazyloadThrottleTimeout) {
+                clearTimeout(lazyloadThrottleTimeout);
+            }
+
+            lazyloadThrottleTimeout = setTimeout(function() {
+                var scrollTop = window.pageYOffset;
+                lazyloadImages.forEach(function(img) {
+                    if (img.offsetTop < (window.innerHeight + scrollTop)) {
+                        img.src = img.dataset.src;
+                        img.classList.remove('lazy');
+                    }
+                });
+
+                // Remove loaded images from the NodeList
+                lazyloadImages = document.querySelectorAll("img.lazy");
+
+                // Scroll horizontally by 100% of the window width only once
+                if (!hasScrolled && lazyloadImages.length > 0) {
+                    window.scrollBy(window.innerWidth, 0);
+                    hasScrolled = true;
+                }
+
+                // If all images are loaded, remove event listeners
+                {{--  if (lazyloadImages.length == 0) {
+                    document.removeEventListener("scroll", lazyload);
+                    window.removeEventListener("resize", lazyload);
+                    window.removeEventListener("orientationChange", lazyload);
+                }  --}}
+            }, 20);
+        }
+        lazyload()
+        document.addEventListener("scroll", lazyload);
+        window.addEventListener("resize", lazyload);
+        window.addEventListener("orientationChange", lazyload);
+
+        // Initial call to load images that are in view on page load
+
+
+ //it script for lazyload image
+</script>
 
 <link rel="stylesheet" href="{{static_asset('plugins/')}}/prism/prism.css">
 <script src="{{static_asset('plugins/')}}/prism/prism.js"></script>
@@ -30,7 +77,11 @@
 <!-- If you want to use the popup integration, -->
 @if (general_setting('sandbox_status')=='on')
 
+
+
+
 <script>
+
 // $('#sslczPayBtn').click(function(){
     var obj = {};
     $("#modal_setup_donation :input").change(function() {

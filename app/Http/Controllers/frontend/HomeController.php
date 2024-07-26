@@ -29,10 +29,6 @@ class HomeController extends Controller
     }
 
 
-    public function feed(){
-        return view('frontend.feed.index');
-    }
-
     public function get_data_search(Request $request){
         // return $request;
         if(isset($request->query_data)){

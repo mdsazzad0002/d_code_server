@@ -26,12 +26,7 @@
     <div class="row flex-column flex-md-row">
 
         <div class="col-md-12">
-            <img class="w-100" src="{{ dynamic_asset($view_post->uploads_id) }}" alt="">
-            <br>
-
-            <div class="mt-2">
-                Last Updated: {{ $view_post->updated_at->format('d-M-Y h:s A') }}
-            </div>
+            @include('frontend.details.partials.post_short_info')
             <div class="my-3">
                 {!! Str::markdown($view_post->details) !!}
             </div>

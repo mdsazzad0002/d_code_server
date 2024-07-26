@@ -4,13 +4,16 @@
         <li class="nav-item">
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
-        @php $category_head = category_head(3); @endphp
-        @foreach ($category_head as $items )
+
+
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="{{ route('category.index', $items->slug) }}" class="nav-link">{{Str::title($items->name) }}</a>
+            <a href="{{ route('home') }}" class="nav-link">Feed</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="{{ route('home.category') }}" class="nav-link">Category</a>
         </li>
 
-        @endforeach
+
 
 
     </ul>

@@ -7,3 +7,25 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ static_asset('frontend/css/adminlte.min.css') }}">
   <link rel="stylesheet" href="{{ static_asset('frontend/css/custom.min.css') }}">
+
+  <style>
+    img.lazy {
+        background: #F1F1FA;
+        width: 100%;
+        height: 300px;
+        display: block;
+        margin: 0;
+        border: 0;
+        animation: opacity_fade 2.5s linear infinite;
+    }
+    @keyframes opacity_fade {
+        50% {
+            opacity: 0.5;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+
+</style>

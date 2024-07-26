@@ -2,7 +2,7 @@
 
     <a href="{{ route('users.index',$view_post?->users?->username ?? '#') }}" class="col-8 col-md-6 d-flex align-items-center  text-light" style="gap: 10px">
         <div>
-            <img style="width: 60px; height:60px; border-radius:10%; object-fit:cover" src="{{dynamic_asset($view_post?->users?->uploads?->id)}}" alt="s">
+            <img style="width: 60px; height:60px; border-radius:10%; object-fit:cover" class="lazy" data-src="{{dynamic_asset($view_post?->users?->uploads?->id)}}" alt="s">
         </div>
         <div>
             <div class="font-weight-bold" style="font-size: 18px">
