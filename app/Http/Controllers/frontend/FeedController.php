@@ -42,7 +42,7 @@ class FeedController extends Controller
     }
 
     public function feed_load(){
-        $posts_data_format_feed    = post::inRandomOrder()->limit(4)->get();
+        $posts_data_format_feed    = post::inRandomOrder()->limit(6)->get();
         return view('frontend.feed.post', compact('posts_data_format_feed'));
     }
 }
