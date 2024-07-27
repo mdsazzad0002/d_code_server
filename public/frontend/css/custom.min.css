@@ -80,3 +80,8 @@ cursor: pointer;
 
 
  }
+
+div.code-toolbar
+{
+    border-left: 4px solid black;
+}
