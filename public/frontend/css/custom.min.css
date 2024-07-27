@@ -53,3 +53,30 @@
     padding-right: 7.5px;
     padding-left: 7.5px;
 }
+.post_details_extra_deasign h1,
+ .post_details_extra_deasign h2,
+ .post_details_extra_deasign h3,
+ .post_details_extra_deasign h4,
+ .post_details_extra_deasign h5,
+ .post_details_extra_deasign h6{
+    margin-top: 30px;
+    color: #00fffa;
+position: relative;
+padding-left: 20px;
+cursor: pointer;
+}
+
+.post_details_extra_deasign h1::after,
+ .post_details_extra_deasign h2::after,
+ .post_details_extra_deasign h3::after,
+ .post_details_extra_deasign h4::after,
+ .post_details_extra_deasign h::after,
+ .post_details_extra_deasign h6::after{
+    content: '#';
+    position: absolute;
+    left: 0;
+    color: white;
+    font-weight: 700;
+
+
+ }

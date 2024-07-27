@@ -15,6 +15,8 @@
     @endforeach
 @endsection
 
+<div class="post_details_extra_deasign">
+
 @if ($view_post)
 
 
@@ -41,6 +43,7 @@
 <div class="comment_list_current_post"></div>
 <div class="comment_data"></div>
 
+</div>
 
 <x-frontend.card>
     <h3 class="d-flex flex-wrap align-items-end">Write a Associte Comment <div class="text-warning mb-1 ml-2 h6">Markdown Editor</div></h3>
@@ -51,13 +54,7 @@
         <button type="submit" class="float-right btn btn-primary"><i class="fas fa-comment"></i> Comment Submit</button>
     </form>
 </x-frontend.card>
-{{--  
-<script>
-    setTimeout(function(){
-            var simplemde = new SimpleMDE({ element: $("#details_comment")[0] });
-    },700)
 
-</script>  --}}
 
 
 
