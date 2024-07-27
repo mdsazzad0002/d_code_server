@@ -60,10 +60,10 @@
  .post_details_extra_deasign h5,
  .post_details_extra_deasign h6{
     margin-top: 30px;
-    color: #00fffa;
-position: relative;
-padding-left: 20px;
-cursor: pointer;
+    color: #07cc9e;
+    position: relative;
+    padding-left: 20px;
+    cursor: pointer;
 }
 
 .post_details_extra_deasign h1::after,
