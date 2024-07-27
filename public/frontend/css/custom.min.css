@@ -86,7 +86,7 @@ div.code-toolbar
     border-left: 4px solid black;
 }
 .text-success{
-    color:#07cc9e;
+    color:#07cc9e !important;
 }
 
 
