@@ -16,9 +16,15 @@ class category extends Model
         'created_at' => 'date:d-M-Y h:s A',
     ];
 
+    protected $appends = ['subcategory'];
+
 
 
     public function uploads(){
         return $this->belongsTo(uploads::class);
+    }
+
+    public function getSubcategoryAttribute(){
+        return $this->hasMany(subcategory::class, 'category_id')->count();
     }
 }

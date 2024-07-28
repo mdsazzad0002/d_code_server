@@ -1,73 +1,68 @@
-
 @section('sidebar')
-    @foreach ($category as $items)
-    <li class="nav-item">
-        <a href="{{ route('category.index', $items->slug) }}" class="nav-link">
-            <i class="nav-icon fas fa-newspaper"></i>
+@foreach ($category as $items)
+<li class="nav-item">
+    <a href="{{ route('category.index', $items->slug) }}" class="nav-link">
+        <i class="nav-icon fas fa-newspaper"></i>
         <p>
-        {{Str::title($items->name)}}
+            {{Str::title($items->name)}}
         </p>
-        </a>
-    </li>
-    @endforeach
+    </a>
+</li>
+@endforeach
 @endsection
 
 
 @php
-    $i = 1;
-    $ads_after_data =  general_setting('post_center_showup_after') ?? 100;
-    $ads_enabled = general_setting('system_showup');
+$i = 1;
+$ads_after_data = general_setting('post_center_showup_after') ?? 100;
+$ads_enabled = general_setting('system_showup');
 @endphp
+<div class="row">
+    @forelse ($category as $items )
 
-@forelse ($category as $items )
+    @php
+    $i++;
+    @endphp
 
-@php
-     $i++;
-@endphp
-
-@if( $ads_enabled == 'on')
+    @if( $ads_enabled == 'on')
     @if($i% $ads_after_data== 0)
+    <div class="col-12">
         @component('components.frontend.ads', ['where'=>'home_showup'])@endcomponent
+    </div>
     @endif
-@endif
+    @endif
 
-@if($i % 2 == 0)
-<x-frontend.card>
-    <div class="row flex-column-reverse flex-md-row">
-        <div class="col-md-6 d-flex align-items-start justify-content-center flex-column py-2">
-            <h1 class="font-weight-bold d-none d-md-block">{{ Str::title($items->name) }}</h1>
-            <div>
-            {{ $items->description }}
+
+    <div class="col-lg-6">
+        <x-frontend.card>
+            <div class="d-flex align-items-center justify-content-between">
+                <h4 class="font-weight-bold "># <span class="text-success">{{ Str::title($items->name) }}</span> </h4>
+                <a href="{ route('category.index', $items->slug) }}" class="text-white font-italic">
+                    {{ $items->subcategory }} Subcategories
+                </a>
             </div>
-            <a class="btn btn-primary rounded-pill p-2 px-4 mt-2" href="{{ route('category.index', $items->slug) }}">See Example</a>
-        </div>
-        <div class="col-md-6">
-            <h1 class="font-weight-bold d-md-none">{{ Str::title($items->name)}}</h1>
-            <img class="w-100" src="{{ dynamic_asset($items->uploads_id) }}" alt="">
-        </div>
-    </div>
-</x-frontend.card>
-@else
-<x-frontend.card>
-    <div class="row  flex-md-row">
-        <div class="col-md-6">
-            <h1 class="font-weight-bold  d-md-none">{{ Str::title($items->name) }}</h1>
-           <img class="w-100" src="{{ dynamic_asset($items->uploads_id) }}" alt="">
-        </div>
-        <div class="col-md-6 d-flex align-items-start justify-content-center flex-column py-2">
-            <h1 class="font-weight-bold d-none d-md-block">{{ Str::title($items->name) }}</h1>
             <div>
-            {{ $items->description }}
+
+                <img class="w-100" src="{{ dynamic_asset($items->uploads_id) }}" alt="">
+                 <div>
+                    {{ $items->description }}
+                </div>
+                <div class="text-center">
+
+                    <a class="btn btn-sm ml-auto btn-primary rounded-pill p-2 px-4 mt-2" href="{{ route('category.index', $items->slug) }}">See Example</a>
+                </div>
             </div>
-            <a class="btn btn-primary rounded-pill p-2 px-4 mt-2" href="{{ route('category.index', $items->slug) }}">See Example</a>
-        </div>
 
+        </x-frontend.card>
     </div>
-</x-frontend.card>
-@endif
 
-@empty
-    <x-404></x-404>
-@endforelse
 
+
+
+    @empty
+    <div class="col-12">
+        <x-404></x-404>
+    </div>
+    @endforelse
+</div>
 {{ $category->links() }}

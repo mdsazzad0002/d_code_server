@@ -16,58 +16,55 @@
 
 
 @php
-    $i = 1;
-    $ads_after_data = general_setting('post_center_showup_after')??100;
-    $ads_enabled =general_setting('system_showup');
+$i = 1;
+$ads_after_data = general_setting('post_center_showup_after')??100;
+$ads_enabled =general_setting('system_showup');
 @endphp
-@forelse ($subcategory as $items )
+<div class="row">
+
+
+    @forelse ($subcategory as $items )
     @php
-         $i++;
+    $i++;
     @endphp
     @if( $ads_enabled=='on')
-        @if($i% $ads_after_data == 0)
-            @component('components.frontend.ads', ['where'=>'category_showup'])@endcomponent
-        @endif
+    @if($i% $ads_after_data == 0)
+    <div class="col-12">
+        @component('components.frontend.ads', ['where'=>'category_showup'])@endcomponent
+    </div>
     @endif
-
-    @if($i % 2 == 0)
-    <x-frontend.card>
-        <div class="row flex-column-reverse flex-md-row">
-            <div class="col-md-6 d-flex align-items-start justify-content-center flex-column py-2">
-                <h1 class="font-weight-bold d-none d-md-block">{{ Str::title($items->name) }}</h1>
-                <div>
-                    {{ $items->description }}
-                </div>
-                <a class="btn btn-primary rounded-pill p-2 px-4 mt-2" href="{{ route('subcategory.index',  [$category_slug, $items->slug]) }}">See Example</a>
-            </div>
-            <div class="col-md-6">
-                <h4 class="font-weight-bold d-md-none">{{ Str::title($items->name)}}</h4>
-                <img class="w-100" src="{{ dynamic_asset($items->uploads_id) }}" alt="">
-            </div>
-        </div>
-    </x-frontend.card>
-    @else
-    <x-frontend.card>
-        <div class="row  flex-md-row">
-            <div class="col-md-6">
-                <h4 class="font-weight-bold d-md-none">{{ Str::title($items->name) }}</h1>
-                    <img class="w-100" src="{{ dynamic_asset($items->uploads_id) }}" alt="">
-            </div>
-
-            <div class="col-md-6 d-flex align-items-start justify-content-center flex-column py-2">
-                <h1 class="font-weight-bold d-none d-md-block">{{ Str::title($items->name) }}</h1>
-                <div>
-                    {{ $items->description }}
-                </div>
-                <a class="btn btn-primary rounded-pill p-2 px-4 mt-2" href="{{ route('subcategory.index', [$category_slug, $items->slug]) }}">See Example</a>
-            </div>
-
-        </div>
-    </x-frontend.card>
     @endif
+    <div class="col-lg-6">
 
-@empty
-    <x-404></x-404>
-@endforelse
+
+        <x-frontend.card>
+            <div class="">
+                <div class="d-flex align-items-center justify-content-between">
+                       <h4 class="font-weight-bold "># <span class="text-success">{{ Str::title($items->name) }}</span> </h4>
+                <a href="{ route('category.index', $items->slug) }}" class="text-white font-italic">
+                    {{ $items->posts_items }} Posts
+                </a>
+                </div>
+
+                <div>
+                    <div>
+                        <img class="w-100" src="{{ dynamic_asset($items->uploads_id) }}" alt="">
+                        {{ $items->description }}
+                    </div>
+
+                    <div class="text-center">
+                        <a class="btn btn-sm btn-primary rounded-pill p-2 px-4 mt-2" href="{{ route('subcategory.index',  [$category_slug, $items->slug]) }}">See Example</a>
+                    </div>
+                </div>
+            </div>
+        </x-frontend.card>
+    </div>
+
+    @empty
+    <div class="col-12">
+        <x-404></x-404>
+    </div>
+    @endforelse
+</div>
 
 {{ $subcategory->links() }}

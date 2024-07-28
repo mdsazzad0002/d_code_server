@@ -12,7 +12,7 @@ class subcategory extends Model
     use HasFactory;
     protected $fillable = ['name','slug', 'category', 'uploads_id'];
 
-
+    protected $appends = ['posts_items'];
    /**
     * Get the category that owns the subcategory
     *
@@ -26,5 +26,9 @@ class subcategory extends Model
 
    public function getCategoryNameAttribute(){
     return $this->category->name ?? null;
+   }
+
+   public function getPostsItemsAttribute(){
+        return $this->hasMany(post::class, 'subcategory_id')->count();
    }
 }
