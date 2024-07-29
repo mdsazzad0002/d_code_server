@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\post;
 use App\Models\Vote;
 use App\Models\comment;
+use App\Models\category;
 use App\Models\subcategory;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -14,8 +15,8 @@ use App\Http\Controllers\Controller;
 class postManageController extends Controller
 {
     public function create(){
-        $subcategory = subcategory::where('status', 1)->select('id','name')->get();
-        return view('backend.post.partials.create', compact('subcategory'));
+        $subcategory = category::where('status', 1)->select('id','name')->get();
+        return view('backend.post.partials.create', compact('category'));
     }
 
     public function store(Request $request)
@@ -43,6 +44,7 @@ class postManageController extends Controller
         }
         $post->short_details = strip_tags($request->short_details);
         $post->subcategory_id = $request->subcategory;
+        $post->category_id = $request->category;
         if(isset($request->upload_asset_image)){
             $post->uploads_id = uploads($request->file('upload_asset_image'));
         }
@@ -88,8 +90,8 @@ class postManageController extends Controller
      */
     public function edit(post $post)
     {
-        $subcategory = subcategory::where('status', 1)->select('id','name')->get();
-        return view('backend.post.partials.edit', compact('post','subcategory'));
+        $category = category::where('status', 1)->select('id','name')->get();
+        return view('backend.post.partials.edit', compact('post','category'));
     }
 
 
@@ -118,6 +120,7 @@ class postManageController extends Controller
         $post->user_id = auth()->user()->id;
         $post->short_details = strip_tags($request->short_details);
         $post->subcategory_id = $request->subcategory;
+        $post->category_id = $request->category;
         if(isset($request->upload_asset_image)){
             $post->uploads_id = uploads($request->file('upload_asset_image'), $post->upload_id);
         }

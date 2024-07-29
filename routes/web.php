@@ -40,6 +40,7 @@ use Database\Seeders\DatabaseSeeder;
 
 // Homepage Frontend Homepage
 Route::get('/category', [HomeController::class, 'index'])->name('home.category');
+
 Route::get('/', [FeedController::class, 'index'])->name('home');
 
 Route::get('/feed_load_data_posst', [FeedController::class, 'feed_load'])->name('feed_load_data_post');
@@ -59,6 +60,9 @@ Route::get('post/{slug}', [DetailsController::class, 'single_items'])->name('pos
 // End Homepage Frontend Homepage
 
 
+// ajax quick_services
+Route::get('category_by_subcategory/{category_id}', [subcategoryController::class, 'category_by_subcategory'])->name('category_by_subcategory');
+// end ajax quick services
 
 
 // comment

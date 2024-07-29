@@ -5,7 +5,8 @@
         <a  href="{{ route('post.single',$view_post->slug) }}">
             <h5 class="font-weight-bold text-success"> # {{ Str::title($view_post->tilte) }}</h5>
              @include('frontend.details.partials.post_short_info')
-            <span class="text-info">See More</span>
+
+             <a href="{{ route('subcategory_by_id.index', [$view_post->category->id, $view_post->category->slug]) }}" class="btn btn-primary  progress-bar progress-bar-striped btn-block my-2">See More</a>
         </a>
 
     </div>

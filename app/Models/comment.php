@@ -22,6 +22,6 @@ class comment extends Model
     }
 
     public function post(){
-        return $this->hasOne(post::class, 'id', 'post_id');
+        return $this->hasOne(post::class, 'id', 'post_id')->where('status', 1);
     }
 }

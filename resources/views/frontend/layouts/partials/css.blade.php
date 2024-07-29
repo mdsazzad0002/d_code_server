@@ -14,14 +14,3 @@
   <link rel="stylesheet" href="{{static_asset('plugins/')}}/markdown/simplemde.min.css">
   <link rel="stylesheet" href="{{static_asset('common/')}}/style.css">
 
-  <style>
-    .select2-container--default .select2-selection--single{
-        padding: .26875rem .75rem !important;
-    }
-    .select2-container .select2-selection--single{
-        height: 34px;
-    }
-    input[type=file].form-control{
-        padding: 3px;
-    }
-  </style>

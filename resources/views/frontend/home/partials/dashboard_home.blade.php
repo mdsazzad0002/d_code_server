@@ -37,19 +37,19 @@ $ads_enabled = general_setting('system_showup');
         <x-frontend.card>
             <div class="d-flex align-items-center justify-content-between">
                 <h4 class="font-weight-bold "># <span class="text-success">{{ Str::title($items->name) }}</span> </h4>
-                <a href="{ route('category.index', $items->slug) }}" class="text-white font-italic">
-                    {{ $items->subcategory }} Subcategories
+                <a href="{{ route('category.index', $items->slug) }}" class="text-white font-italic">
+                    {{ $items->subcategory_items }} Subcategories
                 </a>
             </div>
             <div>
 
                 <img class="w-100" src="{{ dynamic_asset($items->uploads_id) }}" alt="">
-                 <div>
+                 <div class="line-climb-3">
                     {{ $items->description }}
                 </div>
                 <div class="text-center">
 
-                    <a class="btn btn-sm ml-auto btn-primary rounded-pill p-2 px-4 mt-2" href="{{ route('category.index', $items->slug) }}">See Example</a>
+                    <a class="btn btn-sm ml-auto btn-primary btn-block p-2 px-4 mt-2 progress-bar progress-bar-striped" href="{{ route('category.index', $items->slug) }}">See Example</a>
                 </div>
             </div>
 

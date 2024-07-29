@@ -2,7 +2,6 @@
 @section('title', $find_subcategory->name)
 
 @section('content')
-
 <div class="row">
     <div class="col-xl-8">
         @include('frontend.subcategory.partials.all_post')
@@ -11,9 +10,6 @@
         <x-footer_category></x-footer_category>
     </div>
 </div>
-
-
-
 @stop
 
 

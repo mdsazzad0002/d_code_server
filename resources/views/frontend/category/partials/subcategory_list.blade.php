@@ -49,11 +49,13 @@ $ads_enabled =general_setting('system_showup');
                 <div>
                     <div>
                         <img class="w-100" src="{{ dynamic_asset($items->uploads_id) }}" alt="">
-                        {{ $items->description }}
+                        <div class="line-climb-3">
+                            {{ $items->description }}
+                        </div>
                     </div>
 
                     <div class="text-center">
-                        <a class="btn btn-sm btn-primary rounded-pill p-2 px-4 mt-2" href="{{ route('subcategory.index',  [$category_slug, $items->slug]) }}">See Example</a>
+                        <a class="btn btn-sm btn-primary btn-block p-2 px-4 mt-2 progress-bar progress-bar-striped" href="{{ route('subcategory.index',  [$category_slug, $items->slug]) }}">See Example</a>
                     </div>
                 </div>
             </div>

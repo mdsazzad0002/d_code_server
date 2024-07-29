@@ -76,3 +76,27 @@ img.lazy {
     align-items: center;
     font-size: 14px;
 }
+.line-climb-3{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* number of lines to show */
+            line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.select2-container--default .select2-selection--single{
+    padding: .26875rem .75rem !important;
+}
+.select2-container .select2-selection--single{
+    height: 34px !important;
+}
+input[type=file].form-control{
+    padding: 3px;
+}
+.select2-container--default .select2-results>.select2-results__options{
+    background: #343a40;
+}
+.select2-container--default .select2-results__option[aria-selected=true]{
+    background: #0d5fb1;
+}

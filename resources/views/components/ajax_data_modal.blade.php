@@ -60,6 +60,23 @@
                        var simplemde = new SimpleMDE({ element: $("#details")[0] });
 
                    }, 500);
+
+                   $('#category_select').on('change', function(){
+                    $.ajax({
+                        type:'get',
+                        url:"{{ url('category_by_subcategory') }}/"+this.value,
+                        success:function(data_lists){
+                            $('#subcategory_list').html('');
+                            $('#subcategory_list').select2({
+                                data: data_lists,
+                                dropdownParent: $(element_target)
+                            }
+                            );
+
+                        }
+                    })
+
+                   })
                }else{
                    $(element_target+' .modal-dialog').removeClass('modal-lg');
                }

@@ -100,7 +100,7 @@
     <script src="{{static_asset('plugins/')}}/prism/prism.js"></script>
 
 @endsection
+{{--  
+@push('scripts')
 
-{{-- @push('scripts') --}}
-
-{{-- @endpush --}}
+@endpush  --}}
