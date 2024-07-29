@@ -11,8 +11,8 @@
              data-toggle="modal"
              data-target="#modal_setup"
              data-title="Post Create"
-             data-action="{{ route('admin.post.store') }}"
-             data-socuce="{{ route('admin.post.create') }}"
+             data-action="{{ route('user-post.post.store') }}"
+             data-socuce="{{ route('user-post.post.create') }}"
              data-method="post"
              >
              <i class="fa fa-plus"></i> Add New</button>
@@ -45,8 +45,8 @@
                                 data-toggle="modal"
                                 data-target="#modal_setup"
                                 data-title="Post Edit"
-                                data-action="{{ route('admin.post.update', $items->id) }}"
-                                data-socuce="{{ route('admin.post.edit', $items->id ) }}"
+                                data-action="{{ route('user-post.post.update', $items->id) }}"
+                                data-socuce="{{ route('user-post.post.edit', $items->id ) }}"
                                 data-method="put"
                                 >
                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit
@@ -100,7 +100,7 @@
     <script src="{{static_asset('plugins/')}}/prism/prism.js"></script>
 
 @endsection
-{{--  
+{{--
 @push('scripts')
 
 @endpush  --}}

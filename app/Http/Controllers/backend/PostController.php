@@ -25,8 +25,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        $subcategory = subcategory::where('status', 1)->select('id','name')->get();
-        return view('backend.post.partials.create', compact('subcategory'));
+        return false;
     }
 
     /**
@@ -35,28 +34,29 @@ class PostController extends Controller
     public function store(Request $request)
     {
         // return $request;
-        $request->validate(
-            [
-                'details'=> 'required',
-                'title'=> 'required',
-            ]
-        );
+        // $request->validate(
+        //     [
+        //         'details'=> 'required',
+        //         'title'=> 'required',
+        //     ]
+        // );
 
-        $post = new Post;
-        $post->details = $request->details;
-        $post->tilte = $request->title;
-        $post->user_id = auth()->user()->id;
-        $post->short_details = strip_tags($request->short_details);
-        $post->subcategory_id = $request->subcategory;
-        if(isset($request->upload_asset_image)){
-            $post->uploads_id = uploads($request->file('upload_asset_image'));
-        }
-        $post->status = $request->status ?? 1;
-        $post->short_details = $request->short_details.Carbon::now()->toDateTimeString() ?? Carbon::now()->toDateTimeString();
-        $slug = Str::slug($request->title, '-');
-        $post->slug = $slug ?? '';
-        $post->save();
-        return back();
+        // $post = new Post;
+        // $post->details = $request->details;
+        // $post->tilte = $request->title;
+        // $post->user_id = auth()->user()->id;
+        // $post->short_details = strip_tags($request->short_details);
+        // $post->subcategory_id = $request->subcategory;
+        // if(isset($request->upload_asset_image)){
+        //     $post->uploads_id = uploads($request->file('upload_asset_image'));
+        // }
+        // $post->status = $request->status ?? 1;
+        // $post->short_details = $request->short_details.Carbon::now()->toDateTimeString() ?? Carbon::now()->toDateTimeString();
+        // $slug = Str::slug($request->title, '-');
+        // $post->slug = $slug ?? '';
+        // $post->save();
+        // return back();
+        return false;
 
     }
 
@@ -81,8 +81,9 @@ class PostController extends Controller
      */
     public function edit(post $post)
     {
-        $subcategory = subcategory::where('status', 1)->select('id','name')->get();
-        return view('backend.post.partials.edit', compact('post','subcategory'));
+        // $subcategory = subcategory::where('status', 1)->select('id','name')->get();
+        // return view('backend.post.partials.edit', compact('post','subcategory'));
+        return false;
     }
 
 
@@ -98,27 +99,28 @@ class PostController extends Controller
     public function update(Request $request, post $post)
     {
         // return $request;
-        $request->validate(
-            [
-                'details'=> 'required',
-                'title'=> 'required',
-                'subcategory'=>'required'
-            ]
-        );
+        // $request->validate(
+        //     [
+        //         'details'=> 'required',
+        //         'title'=> 'required',
+        //         'subcategory'=>'required'
+        //     ]
+        // );
 
-        $post->details = $request->details;
-        $post->tilte = $request->title;
-        $post->user_id = auth()->user()->id;
-        $post->short_details = strip_tags($request->short_details);
-        $post->subcategory_id = $request->subcategory;
-        if(isset($request->upload_asset_image)){
-            $post->uploads_id = uploads($request->file('upload_asset_image'), $post->upload_id);
-        }
+        // $post->details = $request->details;
+        // $post->tilte = $request->title;
+        // $post->user_id = auth()->user()->id;
+        // $post->short_details = strip_tags($request->short_details);
+        // $post->subcategory_id = $request->subcategory;
+        // if(isset($request->upload_asset_image)){
+        //     $post->uploads_id = uploads($request->file('upload_asset_image'), $post->upload_id);
+        // }
 
-        $post->status = $request->status ?? 1;
-        $post->short_details = $request->short_details ?? '';
-        $post->save();
-        return back();
+        // $post->status = $request->status ?? 1;
+        // $post->short_details = $request->short_details ?? '';
+        // $post->save();
+        // return back();
+        return false;
     }
     public function comment_update(Request $request){
         $find_comment= comment::find($request->id);

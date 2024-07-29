@@ -15,7 +15,7 @@ use App\Http\Controllers\Controller;
 class postManageController extends Controller
 {
     public function create(){
-        $subcategory = category::where('status', 1)->select('id','name')->get();
+        $category = category::where('status', 1)->select('id','name')->get();
         return view('backend.post.partials.create', compact('category'));
     }
 
