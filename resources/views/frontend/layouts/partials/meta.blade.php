@@ -16,7 +16,7 @@
 
 
 <!--  Essential META Tags -->
-<meta property="og:title" content="code.dengrweb.com"/>
+<meta property="og:title" content="@yield('title')"/>
 <meta property="og:type" content="article" />
 <meta property="og:image" content="@yield('og_image')"/>
 <meta property="og:url" content="{{ url()->current() }}"/>
