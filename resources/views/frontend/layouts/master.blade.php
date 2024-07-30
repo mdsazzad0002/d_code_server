@@ -6,7 +6,7 @@
     <title>@yield('title') - {{ Str::title(general_setting('site_title'))}} </title>
     @include('frontend.layouts.partials.css')
     @stack('styles')
-    @cookieconsentscripts
+
 </head>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
     <div class="wrapper">
@@ -47,6 +47,6 @@
 
     @stack('scripts')
 
-    @cookieconsentview
+
 </body>
 </html>
