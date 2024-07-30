@@ -12,9 +12,7 @@
 <meta name="theme-color" content="#343a40"/>
 
 
-<meta property="og:image:type" content="image/png">
-<meta property="og:image:width" content="436">
-<meta property="og:image:height" content="228">
+
 
 
 <!--  Essential META Tags -->
