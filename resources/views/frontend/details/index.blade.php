@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('title', Str::title($view_post->tilte))
-@section('short_description', $view_post->short_description)
+@section('short_description', $view_post->short_details)
 @section('og_image', dynamic_asset($view_post->upload_id))
 @section('keywords', $view_post->keywords)
 @section('content')
