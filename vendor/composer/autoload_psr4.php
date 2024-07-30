@@ -10,6 +10,8 @@ return array(
     'Yoeunes\\Toastr\\' => array($vendorDir . '/yoeunes/toastr/src'),
     'Yajra\\DataTables\\' => array($vendorDir . '/yajra/laravel-datatables-oracle/src'),
     'Whoops\\' => array($vendorDir . '/filp/whoops/src/Whoops'),
+    'Whitecube\\LaravelCookieConsent\\Tests\\' => array($vendorDir . '/whitecube/laravel-cookie-consent/tests'),
+    'Whitecube\\LaravelCookieConsent\\' => array($vendorDir . '/whitecube/laravel-cookie-consent/src'),
     'Webmozart\\Assert\\' => array($vendorDir . '/webmozart/assert/src'),
     'Tree\\' => array($vendorDir . '/nicmart/tree/src'),
     'TijsVerkoyen\\CssToInlineStyles\\' => array($vendorDir . '/tijsverkoyen/css-to-inline-styles/src'),

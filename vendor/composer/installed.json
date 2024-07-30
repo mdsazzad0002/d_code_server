@@ -9634,6 +9634,84 @@
             "install-path": "../webmozart/assert"
         },
         {
+            "name": "whitecube/laravel-cookie-consent",
+            "version": "v1.2.2",
+            "version_normalized": "1.2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/whitecube/laravel-cookie-consent.git",
+                "reference": "584c545c43a9546b3ba87fc231825982ff639c08"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/whitecube/laravel-cookie-consent/zipball/584c545c43a9546b3ba87fc231825982ff639c08",
+                "reference": "584c545c43a9546b3ba87fc231825982ff639c08",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^9|^10|^11",
+                "php": ">=8.1"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.5",
+                "orchestra/testbench": "^8.5|^9.0",
+                "pestphp/pest": "^2.6"
+            },
+            "time": "2024-07-08T11:26:30+00:00",
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Whitecube\\LaravelCookieConsent\\ServiceProvider"
+                    ],
+                    "aliases": {
+                        "Cookies": "Whitecube\\LaravelCookieConsent\\Facades\\Cookies"
+                    }
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Whitecube\\LaravelCookieConsent\\": "src/",
+                    "Whitecube\\LaravelCookieConsent\\Tests\\": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Whitecube",
+                    "email": "hello@whitecube.be"
+                },
+                {
+                    "name": "Toon Van den Bos",
+                    "email": "toon@whitecube.be"
+                }
+            ],
+            "description": "Register, configure and ask for cookies consent in a EU-compliant way.",
+            "keywords": [
+                "compliant",
+                "cookies",
+                "eu",
+                "gdpr",
+                "laravel",
+                "whitecube"
+            ],
+            "support": {
+                "issues": "https://github.com/whitecube/laravel-cookie-consent/issues",
+                "source": "https://github.com/whitecube/laravel-cookie-consent/tree/v1.2.2"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/whitecube",
+                    "type": "github"
+                }
+            ],
+            "install-path": "../whitecube/laravel-cookie-consent"
+        },
+        {
             "name": "yajra/laravel-datatables-oracle",
             "version": "v10.11.4",
             "version_normalized": "10.11.4.0",
