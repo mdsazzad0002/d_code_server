@@ -43,6 +43,7 @@ class ComposerStaticInit41bd76f8bb18d670a14ce34da5a2f2db
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
         '320163ac6b93aebe3dc25b60a0533d56' => __DIR__ . '/..' . '/spatie/laravel-ignition/src/helpers.php',
         '377b22b161c09ed6e5152de788ca020a' => __DIR__ . '/..' . '/spatie/laravel-permission/src/helpers.php',
+        '0b47d6d4a00ca9112ba3953b49e7c9a4' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/helper.php',
         '101b35f72e0ccb1b5ef72aa86bba3ef9' => __DIR__ . '/..' . '/yoeunes/toastr/src/helpers.php',
         '83926a8ce548561e7e05a196ab9d9b27' => __DIR__ . '/../..' . '/app/helper/helper.php',
     );
@@ -55,6 +56,7 @@ class ComposerStaticInit41bd76f8bb18d670a14ce34da5a2f2db
         'Y' => 
         array (
             'Yoeunes\\Toastr\\' => 15,
+            'Yajra\\DataTables\\' => 17,
         ),
         'W' => 
         array (
@@ -215,6 +217,10 @@ class ComposerStaticInit41bd76f8bb18d670a14ce34da5a2f2db
         'Yoeunes\\Toastr\\' => 
         array (
             0 => __DIR__ . '/..' . '/yoeunes/toastr/src',
+        ),
+        'Yajra\\DataTables\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src',
         ),
         'Whoops\\' => 
         array (
@@ -704,10 +710,8 @@ class ComposerStaticInit41bd76f8bb18d670a14ce34da5a2f2db
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
-        'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\SslCommerzPaymentController' => __DIR__ . '/../..' . '/app/Http/Controllers/SslCommerzPaymentController.php',
         'App\\Http\\Controllers\\UploadsController' => __DIR__ . '/../..' . '/app/Http/Controllers/UploadsController.php',
-        'App\\Http\\Controllers\\ViewProfileController' => __DIR__ . '/../..' . '/app/Http/Controllers/ViewProfileController.php',
         'App\\Http\\Controllers\\backend\\BannerController' => __DIR__ . '/../..' . '/app/Http/Controllers/backend/BannerController.php',
         'App\\Http\\Controllers\\backend\\CategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/backend/CategoryController.php',
         'App\\Http\\Controllers\\backend\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/backend/DashboardController.php',
@@ -717,10 +721,13 @@ class ComposerStaticInit41bd76f8bb18d670a14ce34da5a2f2db
         'App\\Http\\Controllers\\backend\\SubcategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/backend/SubcategoryController.php',
         'App\\Http\\Controllers\\backend\\adminController' => __DIR__ . '/../..' . '/app/Http/Controllers/backend/adminController.php',
         'App\\Http\\Controllers\\backend\\userController' => __DIR__ . '/../..' . '/app/Http/Controllers/backend/userController.php',
-        'App\\Http\\Controllers\\comment_controller' => __DIR__ . '/../..' . '/app/Http/Controllers/comment_controller.php',
+        'App\\Http\\Controllers\\frontend\\DetailsController' => __DIR__ . '/../..' . '/app/Http/Controllers/frontend/DetailsController.php',
+        'App\\Http\\Controllers\\frontend\\FeedController' => __DIR__ . '/../..' . '/app/Http/Controllers/frontend/FeedController.php',
         'App\\Http\\Controllers\\frontend\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/frontend/HomeController.php',
-        'App\\Http\\Controllers\\frontend\\SubcategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/frontend/SubcategoryController.php',
         'App\\Http\\Controllers\\frontend\\categoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/frontend/categoryController.php',
+        'App\\Http\\Controllers\\frontend\\comment_controller' => __DIR__ . '/../..' . '/app/Http/Controllers/frontend/comment_controller.php',
+        'App\\Http\\Controllers\\frontend\\subcategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/frontend/subcategoryController.php',
+        'App\\Http\\Controllers\\profile\\ViewProfileController' => __DIR__ . '/../..' . '/app/Http/Controllers/profile/ViewProfileController.php',
         'App\\Http\\Controllers\\profile\\commentController' => __DIR__ . '/../..' . '/app/Http/Controllers/profile/commentController.php',
         'App\\Http\\Controllers\\profile\\postController' => __DIR__ . '/../..' . '/app/Http/Controllers/profile/postController.php',
         'App\\Http\\Controllers\\profile\\profileController' => __DIR__ . '/../..' . '/app/Http/Controllers/profile/profileController.php',
@@ -744,6 +751,7 @@ class ComposerStaticInit41bd76f8bb18d670a14ce34da5a2f2db
         'App\\Library\\SslCommerz\\SslCommerzNotification' => __DIR__ . '/../..' . '/app/Library/SslCommerz/SslCommerzNotification.php',
         'App\\Models\\Banner' => __DIR__ . '/../..' . '/app/Models/Banner.php',
         'App\\Models\\ColorManagement' => __DIR__ . '/../..' . '/app/Models/ColorManagement.php',
+        'App\\Models\\ContributeSummarye' => __DIR__ . '/../..' . '/app/Models/ContributeSummarye.php',
         'App\\Models\\GeneralSetting' => __DIR__ . '/../..' . '/app/Models/GeneralSetting.php',
         'App\\Models\\ProfileDetail' => __DIR__ . '/../..' . '/app/Models/ProfileDetail.php',
         'App\\Models\\Report' => __DIR__ . '/../..' . '/app/Models/Report.php',
@@ -913,8 +921,10 @@ class ComposerStaticInit41bd76f8bb18d670a14ce34da5a2f2db
         'Cron\\MonthField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MonthField.php',
         'Database\\Factories\\UserFactory' => __DIR__ . '/../..' . '/database/factories/UserFactory.php',
         'Database\\Seeders\\DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/DatabaseSeeder.php',
-        'Database\\Seeders\\RollPermissionSeeder' => __DIR__ . '/../..' . '/database/seeders/RollPermissionSeeder.php',
+        'Database\\Seeders\\Postseeder' => __DIR__ . '/../..' . '/database/seeders/Postseeder.php',
+        'Database\\Seeders\\SubcategoriesTableSeeder' => __DIR__ . '/../..' . '/database/seeders/SubcategoriesTableSeeder.php',
         'Database\\Seeders\\UserInfo' => __DIR__ . '/../..' . '/database/seeders/UserInfo.php',
+        'Database\\Seeders\\categoryseeder' => __DIR__ . '/../..' . '/database/seeders/categoryseeder.php',
         'DateError' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateError.php',
         'DateException' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateException.php',
         'DateInvalidOperationException' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateInvalidOperationException.php',
@@ -7112,6 +7122,22 @@ class ComposerStaticInit41bd76f8bb18d670a14ce34da5a2f2db
         'Whoops\\Util\\Misc' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/Misc.php',
         'Whoops\\Util\\SystemFacade' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/SystemFacade.php',
         'Whoops\\Util\\TemplateHelper' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/TemplateHelper.php',
+        'Yajra\\DataTables\\ApiResourceDataTable' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/ApiResourceDataTable.php',
+        'Yajra\\DataTables\\CollectionDataTable' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/CollectionDataTable.php',
+        'Yajra\\DataTables\\Contracts\\DataTable' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Contracts/DataTable.php',
+        'Yajra\\DataTables\\Contracts\\Formatter' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Contracts/Formatter.php',
+        'Yajra\\DataTables\\DataTableAbstract' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/DataTableAbstract.php',
+        'Yajra\\DataTables\\DataTables' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/DataTables.php',
+        'Yajra\\DataTables\\DataTablesServiceProvider' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/DataTablesServiceProvider.php',
+        'Yajra\\DataTables\\EloquentDataTable' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/EloquentDataTable.php',
+        'Yajra\\DataTables\\Exceptions\\Exception' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Exceptions/Exception.php',
+        'Yajra\\DataTables\\Facades\\DataTables' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Facades/DataTables.php',
+        'Yajra\\DataTables\\Processors\\DataProcessor' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Processors/DataProcessor.php',
+        'Yajra\\DataTables\\Processors\\RowProcessor' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Processors/RowProcessor.php',
+        'Yajra\\DataTables\\QueryDataTable' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/QueryDataTable.php',
+        'Yajra\\DataTables\\Utilities\\Config' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Utilities/Config.php',
+        'Yajra\\DataTables\\Utilities\\Helper' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Utilities/Helper.php',
+        'Yajra\\DataTables\\Utilities\\Request' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Utilities/Request.php',
         'Yoeunes\\Toastr\\Facades\\Toastr' => __DIR__ . '/..' . '/yoeunes/toastr/src/Facades/Toastr.php',
         'Yoeunes\\Toastr\\Toastr' => __DIR__ . '/..' . '/yoeunes/toastr/src/Toastr.php',
         'Yoeunes\\Toastr\\ToastrBuilder' => __DIR__ . '/..' . '/yoeunes/toastr/src/ToastrBuilder.php',

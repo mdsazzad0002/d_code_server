@@ -117,7 +117,6 @@ class postManageController extends Controller
 
         $post->details = $request->details;
         $post->tilte = $request->title;
-        $post->user_id = auth()->user()->id;
         $post->short_details = strip_tags($request->short_details);
         $post->subcategory_id = $request->subcategory;
         $post->category_id = $request->category;
