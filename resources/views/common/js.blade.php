@@ -30,12 +30,7 @@
                 hasScrolled = true;
             }
 
-            // If all images are loaded, remove event listeners
-            {{--  if (lazyloadImages.length == 0) {
-                document.removeEventListener("scroll", lazyload);
-                window.removeEventListener("resize", lazyload);
-                window.removeEventListener("orientationChange", lazyload);
-            }  --}}
+         
         }, 20);
     }
     lazyload()
@@ -73,7 +68,7 @@
     }
 
 
-        
+
 
 
 

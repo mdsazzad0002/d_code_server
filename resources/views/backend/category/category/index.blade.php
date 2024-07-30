@@ -2,70 +2,66 @@
 @section('title','Category')
 
 @section('content')
-    <div class="card border">
-        <div class="card-header d-flex justify-content-between ">
-            <h5>Category</h5>
+<div class="card border">
+    <div class="card-header d-flex justify-content-between ">
+        <h5>Category</h5>
 
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary form"
-             data-toggle="modal"
-             data-target="#modal_setup"
-             data-title="Category Create"
-             data-action="{{ route('admin.category.store') }}"
-             data-socuce="{{ route('admin.category.create') }}"
-             data-method="post"
-             >
-             <i class="fa-solid fa-plus"></i> Add New</button>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary form" data-toggle="modal" data-target="#modal_setup" data-title="Category Create" data-action="{{ route('admin.category.store') }}" data-socuce="{{ route('admin.category.create') }}" data-method="post">
+            <i class="fa-solid fa-plus"></i> Add New</button>
 
-        </div>
-        <div class="card-body">
-            <table class="table table-striped table-hover">
-                <x-t_head>
+    </div>
+
+    <div class="card-body">
+        <div class="table-rasponsive">
+            <table id="category_data" class="display table table-bordered table-striped table-hover">
+                <thead>
                     <tr>
-                        <th>###</th>
-                        <th>Category</th>
+                         <th>Category</th>
                         <th>Image</th>
                         <th>Date</th>
-                        <th>Action</th>
+                        <th>Status</th>
+                         <th>Action</th>
                     </tr>
-                </x-t_head>
-                <tbody>
-                    @php
-                         $i=1;
-                    @endphp
-                    @foreach ($categorys as $category)
-                    <tr>
-                        {{-- {{ dd($category->uploads) }} --}}
-                        <td>{{ $i++ }}</td>
-                        <td> {{ $category->name }}</td>
-                        <td> <img style="width:50px" src="{{ dynamic_asset($category->uploads_id) }}" alt=""></td>
-                        <td> {{ $category->created_at }}</td>
-                        <td>
-                            <button type="button" class="btn btn-primary form"
-                            data-toggle="modal"
-                            data-target="#modal_setup"
-                            data-title="Category Edit"
-                            data-action="{{ route('admin.category.update', $category->id) }}"
-                            data-socuce="{{ route('admin.category.edit', $category->id ) }}"
-                            data-method="put"
-                            >
-                              <i class="fa-solid fa-plus"></i> Edit</button>
-
-                            <button type="button" class="btn btn-danger delete"
-                            data-target="#modal_setup_delete"
-                            data-action="{{ route('admin.category.destroy', $category->id) }}"
-                             data-method="delete"
-                            >
-                              <i class="fa fa-trash"></i> Delete</button>
-
-                            </td>
-                    </tr>
-                    @endforeach
-                </tbody>
+                </thead>
             </table>
-            <div>
-                {{ $categorys->links() }}
-            </div>
         </div>
     </div>
+</div>
+
 @endsection
+@push('css')
+<style>
+    #category_data .lazy{
+    height: 50px;
+}
+</style>
+@endpush
+@push('scripts')
+<script>
+    $(document).ready(function() {
+        $('#category_data').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: '',
+            columns: [
+                { data: 'name', name: 'name' },
+                { data: 'image', name: 'image', orderable: false, searchable:false },
+                { data: 'created_at', name: 'created_at' },
+                { data: 'status', name: 'status' },
+                { data: 'action', name: 'action',  orderable: false, searchable: false },
+            ],
+            drawCallback: function(settings) {
+                $("button.form").on('click', function(){
+                    create_form_modal_data(this) 
+                 });
+                 $("button.delete").on('click', function(){
+                    delete_modal_data(this)
+                });
+                
+            }
+        });
+    });
+
+</script>
+@endpush

@@ -1,21 +1,40 @@
 <?php
 
 namespace App\Http\Controllers\backend;
-use App\Http\Controllers\Controller;
 use App\Models\category;
 use App\Models\subcategory;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 use Illuminate\Support\Collection;
+use App\Http\Controllers\Controller;
+
 class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $categorys = category::paginate(20);
-        return view('backend.category.category.index', compact('categorys'));
+        if($request->ajax()){
+            $categorys = category::query();
+            return DataTables::of($categorys)
+                ->addColumn('action', function ($row) {
+                    $action = '';
+                  
+                    $action .= '<button type="button" class="btn btn-primary form" data-toggle="modal" data-target="#modal_setup"  data-title="Category Edit"  data-action="'. route('admin.category.update', $row->id) .'"   data-socuce="'. route('admin.category.edit', $row->id ) .'"  data-method="put" > <i class="fa fa-eye" aria-hidden="true"></i> Edit</button>  ';
+                   
+                   
+                    $action .= '<button type="button" class="btn btn-danger delete"  data-target="#modal_setup_delete"  data-action="'. route('admin.category.destroy', $row->id) .'" data-method="delete" >  <i class="fa fa-trash"></i> Delete</button>';
+                    return  $action;
+            })
+            ->addColumn('image', function ($row) {
+                return '<img src="'.dynamic_asset($row->uploads_id).'" />';
+            })
+            ->rawColumns(['action', 'image'])
+            ->make(true);
+        }
+        return view('backend.category.category.index');
     }
 
     /**

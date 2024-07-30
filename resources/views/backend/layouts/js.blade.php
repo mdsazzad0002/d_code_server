@@ -21,8 +21,8 @@
 <script src="{{static_asset('backend/')}}/js/scripts.js"></script>
 
 <x-ajax_data_modal></x-ajax_data_modal>
-
-{{-- @yield('scripts') --}}
+@include('common.js')
+@stack('scripts')
 
 @if (session()->has('message'))
 <div class="alert alert-success">

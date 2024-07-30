@@ -15,10 +15,22 @@ class category extends Model
 
     protected $casts  = [
         'created_at' => 'date:d-M-Y h:s A',
+        
     ];
 
     protected $appends = ['subcategory_items'];
 
+
+    public function getStatusAttribute($value)
+    {
+        return $value == 1 ? 'Active' : 'Inactive';
+    }
+
+    // Mutator if you need to set the value
+    public function setStatusAttribute($value)
+    {
+        $this->attributes['status'] = ($value === 'Active') ? 1 : 0;
+    }
 
 
     public function uploads(){

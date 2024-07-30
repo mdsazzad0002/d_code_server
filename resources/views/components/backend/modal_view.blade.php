@@ -1,4 +1,5 @@
-  <!-- Modal -->
+
+<!-- Modal -->
   <div class="modal fade" id="modal_setup_view" tabindex="-1" aria-labelledby="modal_setup" aria-hidden="true" enctype="multipart/form-data">
     <div class="modal-dialog">
       <div class="modal-content">

@@ -138,6 +138,85 @@
 
 
 
+    function create_form_modal_data(this_element){
+        var clicked_element = this_element;
+
+
+        var element_target = $(clicked_element).data('target');
+        $(element_target+' .modal-body').html('...');
+        $(element_target+' .modal-title').html('...');
+        $(element_target).attr('action','');
+        $(element_target).attr('method','');
+
+    
+
+        var form_method_for = $(clicked_element).data('method');
+
+        $(element_target).attr('action', $(clicked_element).data('action'));
+        $(element_target+' .modal-title').html($(clicked_element).data('title'));
+        if(form_method_for=='get' || form_method_for=='GET'){
+            $(element_target).attr('method', 'GET');
+        }else{
+            $(element_target).attr('method', 'POST');
+        }
+
+
+        if(form_method_for == 'post' || form_method_for == 'POST'){
+            $.ajax({
+                type:'get',
+                url: '{{ url('/post_method_set') }}',
+                success:function(data){
+                    $(element_target+' .modal-body').html(data);
+                    dialox_content_load(clicked_element);
+                }
+            })
+        }else if(form_method_for == 'put' || form_method_for == 'PUT'){
+            $.ajax({
+                type:'get',
+                url: '{{ url('/put_method_set') }}',
+                success:function(data){
+                    $(element_target+' .modal-body').html(data);
+                    dialox_content_load(clicked_element);
+                }
+            })
+        }
+    }
+
+    function  delete_modal_data(this_element){
+        var element = this_element;
+        var element_target = $(element).data('target');
+        $(element_target).attr('action', $(element).data('action'));
+        $(element_target).attr('method', 'POST');
+        var form_method_for = $(element).data('method');
+            if(form_method_for == 'delete' || form_method_for == 'DELETE'){
+            $.ajax({
+                type:'get',
+                url: '{{ url('/delete_method_set') }}',
+                success:function(data){
+                    $(element_target+' .modal-body').html(data);
+                    // dialox_content_load(clicked_element);
+                }
+            })
+        }
+
+        swal({
+            title: "Are you sure?",
+            text: "You will not be able to recover this items!",
+            icon: "warning",
+            buttons: [
+                'No, cancel it!',
+                'Yes, I am sure!'
+            ],
+            dangerMode: true,
+            }).then(function(isConfirm) {
+            if (isConfirm) {
+                $(element_target).submit();
+            } else {
+                swal("Cancelled", "Your ietms is safe", "error");
+            }
+        });
+    }
+
 
    $(document).ready(function(){
        //delete
@@ -159,47 +238,11 @@
                })
            })
        })
+      
+      
        $("button.delete").on('click', function(){
-           var element = this;
-           var element_target = $(element).data('target');
-           $(element_target).attr('action', $(element).data('action'));
-           $(element_target).attr('method', 'POST');
-           var form_method_for = $(element).data('method');
-               if(form_method_for == 'delete' || form_method_for == 'DELETE'){
-               $.ajax({
-                   type:'get',
-                   url: '{{ url('/delete_method_set') }}',
-                   success:function(data){
-                       $(element_target+' .modal-body').html(data);
-                       // dialox_content_load(clicked_element);
-                   }
-               })
-           }
-
-     swal({
-         title: "Are you sure?",
-         text: "You will not be able to recover this items!",
-         icon: "warning",
-         buttons: [
-           'No, cancel it!',
-           'Yes, I am sure!'
-         ],
-         dangerMode: true,
-       }).then(function(isConfirm) {
-         if (isConfirm) {
-           // swal({
-           //   title: 'Deleted!',
-           //   text: 'Candidates are successfully !',
-           //   icon: 'success'
-           // }).then(function() {
-               $(element_target).submit();
-           // });
-         } else {
-           swal("Cancelled", "Your ietms is safe", "error");
-         }
-       });
-   });
-
+            delete_modal_data(this)
+        });
 
 
        //view
@@ -227,54 +270,12 @@
        })
 
 
-       //create edit
+
+
+         //create edit
        $("button.form").on('click', function(){
-           var element_target = $(this).data('target');
-           $(element_target+' .modal-body').html('...');
-           $(element_target+' .modal-title').html('...');
-           $(element_target).attr('action','');
-           $(element_target).attr('method','');
-
-           var clicked_element = this;
-
-           var form_method_for = $(this).data('method');
-
-           $(element_target).attr('action', $(this).data('action'));
-           $(element_target+' .modal-title').html($(this).data('title'));
-           if(form_method_for=='get' || form_method_for=='GET'){
-               $(element_target).attr('method', 'GET');
-           }else{
-               $(element_target).attr('method', 'POST');
-           }
-
-
-           if(form_method_for == 'post' || form_method_for == 'POST'){
-               $.ajax({
-                   type:'get',
-                   url: '{{ url('/post_method_set') }}',
-                   success:function(data){
-                       $(element_target+' .modal-body').html(data);
-                       dialox_content_load(clicked_element);
-                   }
-               })
-           }else if(form_method_for == 'put' || form_method_for == 'PUT'){
-               $.ajax({
-                   type:'get',
-                   url: '{{ url('/put_method_set') }}',
-                   success:function(data){
-                       $(element_target+' .modal-body').html(data);
-                       dialox_content_load(clicked_element);
-                   }
-               })
-           }
-
-
-
-
-
-
+          create_form_modal_data(this) 
        });
-
 
 
 
