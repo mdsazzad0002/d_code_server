@@ -1,12 +1,12 @@
-/vendor
-/node_modules
-.idea
-.DS_Store
-Thumbs.db
-composer.lock
-package-lock.json
-yarn.lock
-.phpunit.result.cache
-.php-cs-fixer.cache
-.swp
-*.map
+/vendor whitecube .github
+/vendor whitecube node_modules
+/vendor whitecube whitecube .idea
+/vendor whitecube .DS_Store
+/vendor whitecube Thumbs.db
+/vendor whitecube composer.lock
+/vendor whitecube package-lock.json
+/vendor whitecube yarn.lock
+/vendor whitecube .phpunit.result.cache
+/vendor whitecube .php-cs-fixer.cache
+/vendor whitecube .swp
+/vendor whitecube *.map
