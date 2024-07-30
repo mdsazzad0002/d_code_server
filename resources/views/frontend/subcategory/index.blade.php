@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 @section('title', $find_subcategory->name)
 @section('short_description', $find_subcategory->description)
-@section('og_image', dynamic_asset($find_subcategory->upload_id))
+@section('og_image', dynamic_asset($find_subcategory->uploads_id))
 @section('keywords', $find_subcategory->keywords)
 
 @section('content')

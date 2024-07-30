@@ -2,7 +2,7 @@
 
 @section('title',$user->name)
 @section('short_description', $user->tagline)
-@section('og_image', dynamic_asset($user->upload_id))
+@section('og_image', dynamic_asset($user->uploads_id))
 @section('keywords', $user->keywords)
 @section('content')
 

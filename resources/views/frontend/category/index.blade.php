@@ -2,7 +2,7 @@
 
 @section('title', Str::title($category->name))
 @section('short_description', $category->description)
-@section('og_image', dynamic_asset($category->upload_id))
+@section('og_image', dynamic_asset($category->uploads_id))
 @section('keywords', $category->keywords)
 
 @section('content')

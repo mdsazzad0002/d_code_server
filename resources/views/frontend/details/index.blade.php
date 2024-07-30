@@ -2,12 +2,11 @@
 
 @section('title', Str::title($view_post->tilte))
 @section('short_description', $view_post->short_details)
-@section('og_image', dynamic_asset($view_post->upload_id))
+@section('og_image', dynamic_asset($view_post->uploads_id))
 @section('keywords', $view_post->keywords)
+
+
 @section('content')
-
-
-
 <div class="row">
     <div class="col-xl-8">
         @include('frontend.details.partials.view')

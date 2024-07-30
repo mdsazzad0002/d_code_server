@@ -1,7 +1,7 @@
 @extends('profile.layouts.master')
 @section('title',"Vote")
 @section('short_description', 'Your Vote Contribution')
-@section('og_image', dynamic_asset($user->upload_id))
+@section('og_image', dynamic_asset($user->uploads_id))
 @section('keywords', $user->keywords)
 
 @section('content')
