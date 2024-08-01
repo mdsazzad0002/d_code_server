@@ -55,6 +55,7 @@ class postManageController extends Controller
         $post->yyyy = date('Y');
         $slug = Str::slug($request->title.Carbon::now()->toDateTimeString() ?? Carbon::now()->toDateTimeString(), '-');
         $post->slug = $slug ?? '';
+$post->keywords= $request->keywords?? '';
         $post->save();
 
         if(auth()->user()){
