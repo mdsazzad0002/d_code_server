@@ -10,7 +10,9 @@
         @include('frontend.subcategory.partials.all_post')
     </div>
     <div class="col-xl-4">
-        <x-footer_category></x-footer_category>
+        <div class="position_sticky_footer_side">
+            <x-footer_category></x-footer_category>
+        </div>
     </div>
 </div>
 @stop

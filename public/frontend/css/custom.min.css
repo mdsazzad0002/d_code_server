@@ -90,4 +90,39 @@ div.code-toolbar
     color:#07cc9e !important;
 }
 
+    .position_sticky_footer_side{
+        position: sticky;
+        top: 65px;
+    }
+    .position_sticky_footer_side .card-body{
+        max-height: calc(100vh - 140px);
+        overflow: auto;
+    }
 
+
+.position_sticky_footer_side .card .card-header{
+
+    border-bottom: 1px solid #07cc9e;
+}
+
+.position_sticky_footer_side .card:has(> .card-header)  {
+    border-top: 3px solid #07cc9e;
+    border-left: 3px solid #07cc9e;
+    overflow: hidden;
+}
+.position_sticky_footer_side .card:has(> .card-header) .card-body .card-header,
+.position_sticky_footer_side .card:has(> .card-header) .card-body .card-body{
+    border: none;
+}
+
+.position_sticky_footer_side .card:has(> .card-header) .card-header::before{
+    content:'';
+    position:absolute;
+    top:-15px;
+    left:-5px;
+    z-index:1;
+    width:12px;
+    height:35px;
+    background:#07cc9e;
+    transform:rotate(45deg);
+}

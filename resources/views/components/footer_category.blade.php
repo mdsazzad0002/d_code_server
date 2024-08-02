@@ -1,5 +1,5 @@
-<x-frontend.card >
-    <h3 class="mb-3">View More Categories</h3>
+<x-frontend.card title="View More Categories">
+
     @php
         $catgory_list_footer = category_head(30);
     @endphp

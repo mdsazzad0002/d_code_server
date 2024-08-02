@@ -12,36 +12,38 @@
         @include('frontend.details.partials.view')
     </div>
     <div class="col-xl-4">
+        <div class="position_sticky_footer_side">
+            <x-frontend.card title="View More Topics">
+                    @php
+                    // dd($category);
+                    $catgory_list_footer = category_subcategory($category, 30);
+                    @endphp
 
-    <x-frontend.card>
-            <h3 class="mb-3">View More Topics</h3>
-            @php
-            // dd($category);
-            $catgory_list_footer = category_subcategory($category, 30);
-            @endphp
 
+                    <div class="row">
+                        @if($catgory_list_footer!=null)
 
-            <div class="row">
-                @if($catgory_list_footer!=null)
+                        @foreach ($catgory_list_footer as $items )
+                            <div class=" col-md-4 col-xl-12 mb-2 p-2 ">
+                                <div class="card mb-0">
+                                    <div class="card-body">
+                                        <a href="{{ route('subcategory.index',[$category, $items->slug]) }}"
+                                            class=" text-black w-full">{{Str::title($items->name) }}</a>
+                                    </div>
+                                </div>
 
-                @foreach ($catgory_list_footer as $items )
-                    <div class=" col-md-4 col-xl-12 mb-2 p-2 ">
-                        <div class="card mb-0">
-                            <div class="card-body">
-                                <a href="{{ route('subcategory.index',[$category, $items->slug]) }}"
-                                    class=" text-black w-full">{{Str::title($items->name) }}</a>
                             </div>
-                        </div>
 
+                        @endforeach
+                        @endif
                     </div>
 
-                @endforeach
-                @endif
+
+                </x-frontend.card>
             </div>
-
-
-        </x-frontend.card>
-        <x-footer_category></x-footer_category>
+            <div class="position_sticky_footer_side">
+                <x-footer_category></x-footer_category>
+             </div>
     </div>
 </div>
 
