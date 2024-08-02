@@ -120,12 +120,13 @@ Route::prefix('user-post')
 
 
 
-
-
-
-
-
-
+// clear
+Route::get('clear', function () {
+    Artisan::call('config:clear');
+    Artisan::call('config:cache');
+    toastr()->success('Successfully cleared', 'Congrats');
+    return back();
+});
 
 
 
