@@ -7,6 +7,7 @@ use App\Models\ContributeSummarye;
 use App\Models\ProfileDetail;
 use App\Models\SocialLink;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -14,7 +15,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable,  HasRoles;
+    use HasApiTokens, HasFactory, Notifiable,  HasRoles, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -28,7 +29,9 @@ class User extends Authenticatable
         'username',
         'upload_file'
     ];
-    protected $appends = ['upload_file'];
+
+
+    protected $appends = ['upload_file', 'status_name'];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -46,7 +49,8 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        'created_at' => 'date:d M Y h:i:s A',
+        'email_verified_at' => 'date:d M Y h:i:s A',
         'password' => 'hashed',
     ];
 
@@ -64,6 +68,11 @@ class User extends Authenticatable
     public function contribute(){
         return $this->hasOne(ContributeSummarye::class, 'user_id', 'id');
     }
+
+    public function getStatusNameAttribute(){
+        return $this->status == 1 ? 'Active' : "Inactive";
+    }
+
     public function votes(){
         return $this->hasMany(Vote::class, 'user_id');
     }
@@ -76,8 +85,8 @@ class User extends Authenticatable
     public function getUploadFileAttribute()
     {
         return dynamic_asset($this->upload_id);
-        
-       
+
+
     }
 
 }

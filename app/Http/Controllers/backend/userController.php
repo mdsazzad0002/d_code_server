@@ -2,16 +2,52 @@
 
 namespace App\Http\Controllers\backend;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use Yajra\DataTables\DataTables;
 
 class userController extends Controller
 {
-    public function  index(){
-        $users = User::where('role', 'user')->orderBy('id', 'desc')->paginate(30);
-        return view('backend.users.users.index', compact('users'));
+    public function  index(Request $request){
+        if($request->ajax()){
+            $users = User::query()->where('role', 'user');
+            return DataTables::of($users)
+                ->addColumn('action', function ($row) {
+                    $action = '';
+                    $action .= ' <button type="button" class="btn btn-primary form"
+                                    data-toggle="modal"
+                                    data-target="#modal_setup"
+                                    data-title="User Edit"
+                                    data-action="' . route('admin.user-list.update', $row->id) . '"
+                                    data-socuce="' . route('admin.user-list.edit', $row->id) . '"
+                                    data-method="put"
+                                    >
+                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit
+                                </button>';
+
+                    $action .= '<button type="button" class="btn btn-primary view "
+                                    data-toggle="modal"
+                                    data-target="#modal_setup_view"
+                                    data-title="View"
+                                    data-socuce="' . route('admin.user-list.show', $row->id) . '"
+                                    data-method="get">
+                                    <i class="fa fa-eye" aria-hidden="true"></i> View
+                                </button>';
+
+                    $action .= ' <button type="button" class="btn btn-danger delete"
+                                data-target="#modal_setup_delete"
+                                data-action="' . route('admin.user-list.destroy', $row->id) . '"
+                                 data-method="delete"
+                                >
+                                  <i class="fa fa-trash"></i> Delete</button>';
+                    return $action;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+        return view('backend.users.users.index');
     }
 
     public function create(){

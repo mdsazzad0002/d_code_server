@@ -19,69 +19,54 @@
         </div>
         <div class="card-body">
 
-            <table class="table table-border table-striped table-hover">
-                <x-t_head>
+            <table class="table table-border table-striped table-hover" id="users_table">
+                <thead>
                     <tr>
-                        <th>SI NO</th>
                         <th>Name</th>
                         <th>Email</th>
-                        <th>Role</th>
+                        <th>Username</th>
                         <th>Status</th>
                         <th>Date</th>
                         <th>Action</th>
                     </tr>
-                </x-t_head>
-                    @php
-                        $i=1;
-                    @endphp
-                    <tbody>
-                        @foreach ($users as $user)
-                        <tr>
-
-                            <td>{{ $i++ }}</td>
-                            <td>{{ $user->name }}</td>
-                            <td>{{ $user->email }}</td>
-                            <td>{{ $user->role }}</td>
-                            <td>{{ $user->email_verified_at == null ? 'unverivied' : 'Verified' }}</td>
-                            <td>{{ $user->created_at->format('d-M-Y h:i A') }}</td>
-                            <td>
-                                <button type="button" class="btn btn-primary form"
-                                    data-toggle="modal"
-                                    data-target="#modal_setup"
-                                    data-title="User Edit"
-                                    data-action="{{ route('admin.user-list.update', $user->id) }}"
-                                    data-socuce="{{ route('admin.user-list.edit', $user->id ) }}"
-                                    data-method="put"
-                                    >
-                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit
-                                </button>
-
-                                <button type="button" class="btn btn-primary view "
-                                    data-toggle="modal"
-                                    data-target="#modal_setup_view"
-                                    data-title="View"
-                                    data-socuce="{{ route('admin.user-list.show', $user->id ) }}"
-                                    data-method="get">
-                                    <i class="fa fa-eye" aria-hidden="true"></i> View
-                                </button>
-
-
-
-                                <button type="button" class="btn btn-danger delete"
-                                data-target="#modal_setup_delete"
-                                data-action="{{ route('admin.user-list.destroy', $user->id) }}"
-                                 data-method="delete"
-                                >
-                                  <i class="fa fa-trash"></i> Delete</button>
-
-                                </td>
-                        </tr>
-                            @endforeach
-                    </tbody>
-
+                </thead>
             </table>
         </div>
     </div>
 @endsection
 
+
+@push('scripts')
+<script>
+    $(document).ready(function() {
+        $('#users_table').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: '',
+            columns: [
+                { data: 'name', name: 'name' },
+                { data: 'email', name: 'email' },
+                { data: 'username', name: 'username' },
+                { data: 'status_name', name: 'status' },
+                { data: 'created_at', name: 'created_at' },
+                { data: 'action', name: 'action',  orderable: false, searchable: false },
+            ],
+            drawCallback: function(settings) {
+                $("button.form").on('click', function(){
+                    create_form_modal_data(this)
+                 });
+                 $("button.delete").on('click', function(){
+                    delete_modal_data(this)
+                });
+                //view
+                $("button.view").on('click', function(){
+                    data_view_modal(this)
+                })
+            }
+        });
+    });
+
+
+</script>
+@endpush
 
