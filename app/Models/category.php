@@ -20,19 +20,14 @@ class category extends Model
 
     ];
 
-    protected $appends = ['subcategory_items'];
+    protected $appends = ['subcategory_items', 'status_name'];
 
 
-    public function getStatusAttribute($value)
+    public function getStatusNameAttribute()
     {
-        return $value == 1 ? 'Active' : 'Inactive';
+        return $this->status == 1 ? 'Active' : 'Inactive';
     }
 
-    // Mutator if you need to set the value
-    // public function setStatusAttribute($value)
-    // {
-    //     $this->attributes['status'] = ($value === 'Active') ? 1 : 0;
-    // }
 
 
     public function uploads(){

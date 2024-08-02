@@ -48,17 +48,17 @@
                 { data: 'name', name: 'name' },
                 { data: 'image', name: 'image', orderable: false, searchable:false },
                 { data: 'created_at', name: 'created_at' },
-                { data: 'status', name: 'status' },
+                { data: 'status_name', name: 'status' },
                 { data: 'action', name: 'action',  orderable: false, searchable: false },
             ],
             drawCallback: function(settings) {
                 $("button.form").on('click', function(){
-                    create_form_modal_data(this) 
+                    create_form_modal_data(this)
                  });
                  $("button.delete").on('click', function(){
                     delete_modal_data(this)
                 });
-                
+
             }
         });
     });

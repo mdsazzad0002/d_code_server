@@ -10,7 +10,7 @@
 <script src="{{static_asset('plugins/')}}/select2/js/select2.full.min.js"></script>
 <script src="{{static_asset('plugins/')}}/sweetalert2/sweetalert2.all.min.js"></script>
 
-
+<script src="{{static_asset('plugins/')}}/prism/prism.js"></script>
 <!-- Start datatable js -->
 <script src="{{static_asset('plugins/')}}/datatables/jquery.dataTables.js"></script>
 <script src="{{static_asset('plugins/')}}/datatables/jquery.dataTables.min.js"></script>

@@ -11,12 +11,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class subcategory extends Model
 {
     use HasFactory, SoftDeletes;
-    protected $fillable = ['name','slug', 'category', 'uploads_id'];
+    protected $fillable = ['name','slug', 'category', 'uploads_id','category_name'];
     protected $casts  = [
         'created_at' => 'date:d-M-Y h:s A',
 
     ];
-    protected $appends = ['posts_items'];
+    protected $appends = ['posts_items', 'category_name','status_name'];
    /**
     * Get the category that owns the subcategory
     *
@@ -26,11 +26,12 @@ class subcategory extends Model
    {
        return $this->belongsTo(category::class, 'category_id', 'id');
    }
+   
+   public function getStatusNameAttribute()
+    {
+        return $this->status == 1 ? 'Active' : 'Inactive';
+    }
 
-   public function getStatusAttribute($value)
-   {
-       return $value == 1 ? 'Active' : 'Inactive';
-   }
 
    // Mutator if you need to set the value
 //    public function setStatusAttribute($value)

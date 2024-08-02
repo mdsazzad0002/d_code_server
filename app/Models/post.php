@@ -13,6 +13,10 @@ class post extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $casts = [
+        'created_at' => 'date:d-M-Y h:s A',
+    ];
+    protected $appends = ['status_name', 'category_name', 'subcategory_name'];
     public function users(){
         return $this->hasOne(User::class,'id' ,'user_id' );
     }
@@ -23,4 +27,18 @@ class post extends Model
     public function subcategory(){
         return $this->hasOne(subcategory::class, 'id', 'subcategory_id');
     }
+
+    public function getStatusNameAttribute(){
+        return $this->status == 1 ? 'Active' : "Inactive";
+    }
+
+    public function getCategoryNameAttribute()
+    {
+        return $this->category->name ?? '';
+    }
+
+    public function getSubcategoryNameAttribute(){
+        return $this->subcategory->name ?? '';
+    }
+
 }

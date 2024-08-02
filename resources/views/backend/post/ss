@@ -1,0 +1,25 @@
+  <tbody>
+                    @php
+                         $i=1;
+                    @endphp
+                    @foreach ($post_all as $items)
+                    <tr>
+                        {{-- {{ dd($category->uploads) }} --}}
+                        <td>{{ $i++ }}</td>
+                        <td> {{ $items->tilte }}</td>
+                        <td> <img style="width:50px" src="{{ dynamic_asset($items->uploads_id) }}" alt=""></td>
+                        <td> {{ $items->created_at->format('d-m-Y h:s:i A') }}</td>
+                        <td>
+                            
+
+                            </td>
+
+
+                    </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+
+                <div>
+                {{-- {{ $post_all->appends($request)->links() }} --}}
+            </div>

@@ -9,6 +9,6 @@
 <img style="width: 100px" src="{{ dynamic_asset($category->uploads_id) }}" alt="">
 <br>
 <select class="form-control select2  mt-2" name="status"   id="status">
-    <option @if($category->status == "Active" ) selected @endif value="1">Active</option>
-    <option @if($category->status == "Inactive" ) selected @endif value="0">Inactive</option>
+    <option @if($category->status == 1 ) selected @endif value="1">Active</option>
+    <option @if($category->status == 0 ) selected @endif value="0">Inactive</option>
 </select>

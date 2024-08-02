@@ -24,11 +24,12 @@
                     <table id="subcategory_data" class="display table table-bordered table-striped table-hover">
                         <thead>
                             <tr>
-                                 <th>Category</th>
+                                <th>Sub Category</th>
+                                <th>Category</th>
                                 <th>Image</th>
                                 <th>Date</th>
                                 <th>Status</th>
-                                 <th>Action</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                     </table>
@@ -47,19 +48,20 @@
             ajax: '',
             columns: [
                 { data: 'name', name: 'name' },
+                { data: 'category_name', name: 'category_id' },
                 { data: 'image', name: 'image', orderable: false, searchable:false },
                 { data: 'created_at', name: 'created_at' },
-                { data: 'status', name: 'status' },
+                { data: 'status_name', name: 'status' },
                 { data: 'action', name: 'action',  orderable: false, searchable: false },
             ],
             drawCallback: function(settings) {
                 $("button.form").on('click', function(){
-                    create_form_modal_data(this) 
+                    create_form_modal_data(this)
                  });
                  $("button.delete").on('click', function(){
                     delete_modal_data(this)
                 });
-                
+
             }
         });
     });

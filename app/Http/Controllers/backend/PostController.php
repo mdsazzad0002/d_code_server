@@ -8,6 +8,7 @@ use App\Models\subcategory;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class PostController extends Controller
 {
@@ -16,8 +17,58 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
-        $post_all = post::where('status', 1)->orderBy('id','DESC')->paginate(20);
-        return view('backend.post.index', compact('post_all', 'request'));
+        if($request->ajax()){
+
+             $post_all = post::query();
+            return DataTables::of($post_all)
+                ->addColumn('action', function ($row) {
+                    $action = '';
+                    $action .= '<button type="button" class="btn btn-primary form markdown"
+                                data-toggle="modal"
+                                data-target="#modal_setup"
+                                data-title="Post Edit"
+                                data-action="'.route('user-post.post.update', $row->id) .'"
+                                data-socuce="'. route('user-post.post.edit', $row->id ) .'"
+                                data-method="put"
+                                >
+                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit
+                            </button>';
+
+                            $action .='<button type="button" class="btn btn-primary view lg_view "
+                                data-toggle="modal"
+                                data-target="#modal_setup_view"
+                                data-title="View"
+                                data-socuce="'. route('admin.post.show', $row->id ) .'"
+                                data-method="get">
+                                <i class="fa fa-eye" aria-hidden="true"></i> View
+                            </button>';
+
+                             $action .= '<button type="button" class="btn btn-primary view lg_view"
+                                data-toggle="modal"
+                                data-target="#modal_setup_view"
+                                data-title="Comment - '. $row->tilte .'"
+                                data-socuce="'. route('admin.post.comment', $row->id ) .'"
+                                data-method="get">
+                                <i class="fas fa-comment" aria-hidden="true"></i> Comments
+                            </button>';
+
+                              $action .='<button type="button" class="btn btn-danger delete"
+                            data-target="#modal_setup_delete"
+                            data-action="'. route('admin.post.destroy', $row->id) .'"
+                             data-method="delete"
+                            >
+                              <i class="fa fa-trash"></i> Delete</button>';
+                    return $action;
+                })
+                ->addColumn('image', function ($row) {
+                    return '<img src="' . dynamic_asset($row->uploads_id) . '"/>';
+            })
+            ->rawColumns(['image','action'])
+            ->make(true);
+
+
+        }
+        return view('backend.post.index');
     }
 
     /**
@@ -33,29 +84,6 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        // return $request;
-        // $request->validate(
-        //     [
-        //         'details'=> 'required',
-        //         'title'=> 'required',
-        //     ]
-        // );
-
-        // $post = new Post;
-        // $post->details = $request->details;
-        // $post->tilte = $request->title;
-        // $post->user_id = auth()->user()->id;
-        // $post->short_details = strip_tags($request->short_details);
-        // $post->subcategory_id = $request->subcategory;
-        // if(isset($request->upload_asset_image)){
-        //     $post->uploads_id = uploads($request->file('upload_asset_image'));
-        // }
-        // $post->status = $request->status ?? 1;
-        // $post->short_details = $request->short_details.Carbon::now()->toDateTimeString() ?? Carbon::now()->toDateTimeString();
-        // $slug = Str::slug($request->title, '-');
-        // $post->slug = $slug ?? '';
-        // $post->save();
-        // return back();
         return false;
 
     }
@@ -81,8 +109,6 @@ class PostController extends Controller
      */
     public function edit(post $post)
     {
-        // $subcategory = subcategory::where('status', 1)->select('id','name')->get();
-        // return view('backend.post.partials.edit', compact('post','subcategory'));
         return false;
     }
 
@@ -98,30 +124,9 @@ class PostController extends Controller
      */
     public function update(Request $request, post $post)
     {
-        // return $request;
-        // $request->validate(
-        //     [
-        //         'details'=> 'required',
-        //         'title'=> 'required',
-        //         'subcategory'=>'required'
-        //     ]
-        // );
-
-        // $post->details = $request->details;
-        // $post->tilte = $request->title;
-        // $post->user_id = auth()->user()->id;
-        // $post->short_details = strip_tags($request->short_details);
-        // $post->subcategory_id = $request->subcategory;
-        // if(isset($request->upload_asset_image)){
-        //     $post->uploads_id = uploads($request->file('upload_asset_image'), $post->upload_id);
-        // }
-
-        // $post->status = $request->status ?? 1;
-        // $post->short_details = $request->short_details ?? '';
-        // $post->save();
-        // return back();
         return false;
     }
+
     public function comment_update(Request $request){
         $find_comment= comment::find($request->id);
         if($find_comment){

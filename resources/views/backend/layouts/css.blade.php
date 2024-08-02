@@ -20,7 +20,7 @@
 
     <!-- modernizr css -->
     <script src="{{static_asset('backend/')}}/js/vendor/modernizr-2.8.3.min.js"></script>
-
+    <link rel="stylesheet" href="{{static_asset('plugins/')}}/prism/prism.css">
     <link rel="stylesheet" href="{{static_asset('plugins/')}}/select2/css/select2.min.css">
     <link rel="stylesheet" href="{{static_asset('backend/')}}/css/custom.css">
     <link rel="stylesheet" href="{{static_asset('common/')}}/style.css">
