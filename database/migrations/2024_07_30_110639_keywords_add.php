@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::table('posts', function (Blueprint $table) {
             $table->longText('keywords');
+            $table->timestamp('deleted_at')->nullable();
         });
     }
 
@@ -23,6 +24,7 @@ return new class extends Migration
     {
         Schema::table('posts', function (Blueprint $table) {
             $table->dropColumn('keywords');
+            $table->dropColumn('deleted_at');
         });
     }
 };

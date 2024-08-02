@@ -148,7 +148,7 @@
         $(element_target).attr('action','');
         $(element_target).attr('method','');
 
-    
+
 
         var form_method_for = $(clicked_element).data('method');
 
@@ -238,8 +238,8 @@
                })
            })
        })
-      
-      
+
+
        $("button.delete").on('click', function(){
             delete_modal_data(this)
         });
@@ -273,10 +273,7 @@
 
 
          //create edit
-       $("button.form").on('click', function(){
-          create_form_modal_data(this) 
-       });
-
+  
 
 
    });

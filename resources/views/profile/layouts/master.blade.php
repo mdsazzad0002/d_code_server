@@ -34,7 +34,12 @@
         <hr>
     </div>
 {{-- end footer copyright with text  --}}
+<script>
+    $("button.form").on('click', function(){
+ create_form_modal_data(this)
+});
 
+</script>
 
   </body>
 </html>

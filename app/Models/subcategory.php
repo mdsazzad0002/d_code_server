@@ -6,14 +6,15 @@ use App\Models\category;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class subcategory extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
     protected $fillable = ['name','slug', 'category', 'uploads_id'];
     protected $casts  = [
         'created_at' => 'date:d-M-Y h:s A',
-        
+
     ];
     protected $appends = ['posts_items'];
    /**
@@ -32,10 +33,10 @@ class subcategory extends Model
    }
 
    // Mutator if you need to set the value
-   public function setStatusAttribute($value)
-   {
-       $this->attributes['status'] = ($value === 'Active') ? 1 : 0;
-   }
+//    public function setStatusAttribute($value)
+//    {
+//        $this->attributes['status'] = ($value === 'Active') ? 1 : 0;
+//    }
 
    public function getCategoryNameAttribute(){
     return $this->category->name ?? null;

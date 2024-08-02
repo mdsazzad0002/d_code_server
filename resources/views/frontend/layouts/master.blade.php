@@ -34,18 +34,24 @@
         @include('common.footer')
     </div>
 
+
+
+
+
+
     <!-- ./wrapper -->
     @include('frontend.layouts.partials.js')
     <!-- footer area start-->
 
-
-
-
-
-
     @include('common.js')
 
     @stack('scripts')
+    <script>
+             $("button.form").on('click', function(){
+          create_form_modal_data(this)
+       });
+
+    </script>
 
 
 </body>

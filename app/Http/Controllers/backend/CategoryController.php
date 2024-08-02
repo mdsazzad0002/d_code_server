@@ -21,10 +21,10 @@ class CategoryController extends Controller
             return DataTables::of($categorys)
                 ->addColumn('action', function ($row) {
                     $action = '';
-                  
+
                     $action .= '<button type="button" class="btn btn-primary form" data-toggle="modal" data-target="#modal_setup"  data-title="Category Edit"  data-action="'. route('admin.category.update', $row->id) .'"   data-socuce="'. route('admin.category.edit', $row->id ) .'"  data-method="put" > <i class="fa fa-eye" aria-hidden="true"></i> Edit</button>  ';
-                   
-                   
+
+
                     $action .= '<button type="button" class="btn btn-danger delete"  data-target="#modal_setup_delete"  data-action="'. route('admin.category.destroy', $row->id) .'" data-method="delete" >  <i class="fa fa-trash"></i> Delete</button>';
                     return  $action;
             })
@@ -59,11 +59,14 @@ class CategoryController extends Controller
             $category = new category;
             $category->name = $request->name;
             $category->slug = $slug;
+            $category->keywords = $request->keywords;
             $category->description = $request->description;
             if($request->file('photo')){
                 $category->uploads_id = uploads($request->file('photo'));
             }
             $category->save();
+
+           
 
             toastr()->success('Successfully Created Category!', 'Congrats');
         }else{
@@ -95,6 +98,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, category $category)
     {
+        // return $request->all();
         $request->validate(['name'=>'required']);
 
         $slug = Str::slug($request->name, '-');
@@ -106,6 +110,9 @@ class CategoryController extends Controller
                     $category->name = $request->name,
                     $category->description = $request->description,
                     $category->slug = $slug,
+                    $category->status = $request->status,
+                    $category->keywords = $request->keywords,
+
 
                 ]
             );
