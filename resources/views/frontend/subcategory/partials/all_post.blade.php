@@ -31,7 +31,7 @@ $post_after = general_setting('post_center_showup_after') ?? 100;
 <x-frontend.card>
 
     <div>
-        <h4 class="font-weight-bold d-md-none">{{ Str::title($items->tilte) }}</h4>
+        <h4 class="font-weight-bold "># <span class="text-success"> {{ Str::title($items->tilte) }}</span></h4>
         <img class="w-100" src="{{ dynamic_asset($items->uploads_id) }}" alt="">
     </div>
     <div class="">
